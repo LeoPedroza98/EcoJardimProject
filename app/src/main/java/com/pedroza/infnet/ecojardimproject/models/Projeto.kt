@@ -12,4 +12,3 @@ data class Projeto(
     var clienteId: Long,
     var cliente: Cliente?
 )
-
