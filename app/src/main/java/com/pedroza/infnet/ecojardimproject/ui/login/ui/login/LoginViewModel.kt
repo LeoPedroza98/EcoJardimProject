@@ -1,13 +1,12 @@
 package com.pedroza.infnet.ecojardimproject.ui.login.ui.login
 
+import android.util.Patterns
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import android.util.Patterns
+import com.pedroza.infnet.ecojardimproject.R
 import com.pedroza.infnet.ecojardimproject.ui.login.data.LoginRepository
 import com.pedroza.infnet.ecojardimproject.ui.login.data.Result
-
-import com.pedroza.infnet.ecojardimproject.ui.login.R
 
 class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel() {
 
