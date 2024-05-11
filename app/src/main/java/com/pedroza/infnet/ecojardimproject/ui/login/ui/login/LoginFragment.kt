@@ -7,6 +7,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
+import com.pedroza.infnet.ecojardimproject.R
 import com.pedroza.infnet.ecojardimproject.databinding.FragmentLoginBinding
 
 class LoginFragment : Fragment() {
@@ -35,7 +37,6 @@ class LoginFragment : Fragment() {
         val usernameEditText = binding.username
         val passwordEditText = binding.password
         val loginButton = binding.login
-        val loadingProgressBar = binding.loading
 
 
         val afterTextChangedListener = object : TextWatcher {
@@ -53,7 +54,9 @@ class LoginFragment : Fragment() {
         usernameEditText.addTextChangedListener(afterTextChangedListener)
         passwordEditText.addTextChangedListener(afterTextChangedListener)
 
-
+        loginButton.setOnClickListener {
+           findNavController().navigate(R.id.action_loginFragment_to_nav_home)
+        }
     }
 
     override fun onDestroyView() {
