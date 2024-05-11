@@ -8,6 +8,6 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <color name="greenEco">#00B158</color>
-    <color name="blueEco">#0099F3</color>
+    <color name="green_eco">#00B158</color>
+    <color name="blue_eco">#0099F3</color>
 </resources>

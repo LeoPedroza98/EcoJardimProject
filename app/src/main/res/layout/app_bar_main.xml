@@ -15,7 +15,7 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@color/greenEco"
+            android:background="@color/green_eco"
             app:popupTheme="@style/Theme.EcoJardimProject.PopupOverlay" />
 
     </com.google.android.material.appbar.AppBarLayout>

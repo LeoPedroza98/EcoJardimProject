@@ -11,8 +11,8 @@
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
 
-    <string name="ecojardimTitle">EcoJardimPro</string>
-    <string name="ecojardimSubTitle">Software de Gestão para Jardineiro/Paisagista</string>
+    <string name="ecojardim_title">EcoJardimPro</string>
+    <string name="ecojardim_subTitle">Software de Gestão para JardineiroPaisagista</string>
     <string name="action_entrar">Entrar</string>
     <string name="action_cadastrar">Cadastre-se</string>
     <!-- Strings related to login -->
