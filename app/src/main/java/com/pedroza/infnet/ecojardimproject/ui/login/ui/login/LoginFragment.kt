@@ -38,21 +38,23 @@ class LoginFragment : Fragment() {
         val passwordEditText = binding.password
         val loginButton = binding.login
 
-
-        val afterTextChangedListener = object : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
-                // ignore
+        val textWatcher = object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
             }
 
-            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
-                // ignore
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                val usernameInput = usernameEditText.text.toString().trim()
+                val passwordInput = passwordEditText.text.toString().trim()
+
+                loginButton.isEnabled = usernameInput.isNotEmpty() && passwordInput.isNotEmpty()
             }
 
-            override fun afterTextChanged(s: Editable) {
+            override fun afterTextChanged(s: Editable?) {
             }
         }
-        usernameEditText.addTextChangedListener(afterTextChangedListener)
-        passwordEditText.addTextChangedListener(afterTextChangedListener)
+
+        usernameEditText.addTextChangedListener(textWatcher)
+        passwordEditText.addTextChangedListener(textWatcher)
 
         loginButton.setOnClickListener {
            findNavController().navigate(R.id.action_loginFragment_to_nav_home)
