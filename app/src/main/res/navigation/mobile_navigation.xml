@@ -25,7 +25,6 @@
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.pedroza.infnet.ecojardimproject.ui.login.ui.login.LoginFragment"
-        android:label="fragment_login"
         tools:layout="@layout/fragment_login" >
         <action
             android:id="@+id/action_loginFragment_to_nav_home"
