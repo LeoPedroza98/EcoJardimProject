@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1090235643153",
+    "project_id": "ecojardimproject",
+    "storage_bucket": "ecojardimproject.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1090235643153:android:fbe34448c35ef6f0c988b0",
+        "android_client_info": {
+          "package_name": "com.pedroza.infnet.ecojardimproject"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyANoYdFM7CC9lbHXSjLaD_ExVsxR2z08rQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

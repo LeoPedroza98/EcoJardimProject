@@ -14,9 +14,6 @@ import com.pedroza.infnet.ecojardimproject.databinding.FragmentLoginBinding
 class LoginFragment : Fragment() {
 
     private var _binding: FragmentLoginBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -37,6 +34,7 @@ class LoginFragment : Fragment() {
         val usernameEditText = binding.username
         val passwordEditText = binding.password
         val loginButton = binding.login
+        val cadastraButton = binding.cadastra
 
         val textWatcher = object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
@@ -56,8 +54,16 @@ class LoginFragment : Fragment() {
         usernameEditText.addTextChangedListener(textWatcher)
         passwordEditText.addTextChangedListener(textWatcher)
 
+
+
         loginButton.setOnClickListener {
            findNavController().navigate(R.id.action_loginFragment_to_nav_home)
+        }
+
+        cadastraButton.isEnabled = true
+
+        cadastraButton.setOnClickListener {
+            findNavController().navigate(R.id.action_loginFragment_to_cadastroFragment)
         }
     }
 
