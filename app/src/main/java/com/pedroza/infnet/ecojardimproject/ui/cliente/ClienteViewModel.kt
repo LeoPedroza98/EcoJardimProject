@@ -1,13 +1,13 @@
-package com.pedroza.infnet.ecojardimproject.ui.gallery
+package com.pedroza.infnet.ecojardimproject.ui.cliente
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class GalleryViewModel : ViewModel() {
+class ClienteViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
-        value = "This is gallery Fragment"
+        value = "This is Cliente Fragment"
     }
     val text: LiveData<String> = _text
 }

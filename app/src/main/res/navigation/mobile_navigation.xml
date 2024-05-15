@@ -12,16 +12,16 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/nav_gallery"
-        android:name="com.pedroza.infnet.ecojardimproject.ui.gallery.GalleryFragment"
-        android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_gallery" />
+        android:id="@+id/nav_cliente"
+        android:name="com.pedroza.infnet.ecojardimproject.ui.cliente.ClienteFragment"
+        android:label="@string/menu_cliente"
+        tools:layout="@layout/fragment_cliente" />
 
     <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="com.pedroza.infnet.ecojardimproject.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
+        android:id="@+id/nav_projeto"
+        android:name="com.pedroza.infnet.ecojardimproject.ui.projeto.ProjetoFragment"
+        android:label="@string/menu_projeto"
+        tools:layout="@layout/fragment_projeto" />
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.pedroza.infnet.ecojardimproject.ui.login.ui.login.LoginFragment"
@@ -42,4 +42,14 @@
             android:id="@+id/action_cadastroFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/nav_orcamentos"
+        android:name="com.pedroza.infnet.ecojardimproject.ui.orcamentos.OrcamentosFragment"
+        android:label="fragment_orcamentos"
+        tools:layout="@layout/fragment_orcamentos" />
+    <fragment
+        android:id="@+id/nav_servicos"
+        android:name="com.pedroza.infnet.ecojardimproject.ui.servicos.ServicosFragment"
+        android:label="fragment_servicos"
+        tools:layout="@layout/fragment_servicos" />
 </navigation>
