@@ -39,4 +39,6 @@
     <string name="conteudo_sobrenome">Sobrenome</string>
     <string name="conteudo_documento">Documento</string>
     <string name="add_list">Adicionar</string>
+    <string name="title_listagem_cliente">Clientes</string>
+    <string name="subtitle_lista_clientes">Listagem de Clientes</string>
 </resources>
