@@ -32,4 +32,11 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_cadastro">Cadastro EcoJardimPro</string>
     <string name="btn_cadastro">Cadastrar</string>
+    <string name="title_nome">Nome:</string>
+    <string name="title_sobrenome">Sobrenome:</string>
+    <string name="title_documento">CPF/CNPJ:</string>
+    <string name="conteudo_nome">Nome</string>
+    <string name="conteudo_sobrenome">Sobrenome</string>
+    <string name="conteudo_documento">Documento</string>
+    <string name="add_list">Adicionar</string>
 </resources>
