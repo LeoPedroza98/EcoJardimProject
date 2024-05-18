@@ -1,6 +1,7 @@
 package com.pedroza.infnet.ecojardimproject.service
 
 import com.pedroza.infnet.ecojardimproject.models.Cliente
+import com.pedroza.infnet.ecojardimproject.response.ClienteResponse
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.DELETE
@@ -10,12 +11,12 @@ import retrofit2.http.Path
 
 
 interface ClienteApiService {
-    @GET("/clientes")
-    fun getClientes(): Call<List<Cliente?>?>?
+    @GET("/Cliente")
+    fun getClientes(): Call<ClienteResponse>
 
-    @POST("/clientes")
+    @POST("/Cliente")
     fun createCliente(@Body cliente: Cliente?): Call<Cliente?>?
 
-    @DELETE("/clientes/{id}")
+    @DELETE("/Cliente/{id}")
     fun deleteCliente(@Path("id") id: Long?): Call<Void?>?
 }

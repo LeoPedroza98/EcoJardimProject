@@ -36,8 +36,8 @@
     <fragment
         android:id="@+id/cadastroFragment"
         android:name="com.pedroza.infnet.ecojardimproject.ui.login.ui.login.CadastroFragment"
-        android:label="fragment_cadastro"
-        tools:layout="@layout/fragment_cadastro" >
+        android:label="@string/cadastro_fragment"
+        tools:layout="@layout/fragment_cadastro">
         <action
             android:id="@+id/action_cadastroFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
@@ -45,11 +45,11 @@
     <fragment
         android:id="@+id/nav_orcamentos"
         android:name="com.pedroza.infnet.ecojardimproject.ui.orcamentos.OrcamentosFragment"
-        android:label="fragment_orcamentos"
+        android:label="@string/menu_orcamentos"
         tools:layout="@layout/fragment_orcamentos" />
     <fragment
         android:id="@+id/nav_servicos"
         android:name="com.pedroza.infnet.ecojardimproject.ui.servicos.ServicosFragment"
-        android:label="fragment_servicos"
+        android:label="@string/menu_servicos"
         tools:layout="@layout/fragment_servicos" />
 </navigation>

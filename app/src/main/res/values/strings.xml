@@ -41,4 +41,5 @@
     <string name="add_list">Adicionar</string>
     <string name="title_listagem_cliente">Clientes</string>
     <string name="subtitle_lista_clientes">Listagem de Clientes</string>
+    <string name="cadastro_fragment">Cadastro</string>
 </resources>
