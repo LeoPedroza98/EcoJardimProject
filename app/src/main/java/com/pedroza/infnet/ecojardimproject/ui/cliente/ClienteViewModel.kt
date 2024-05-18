@@ -17,21 +17,6 @@ class ClienteViewModel : ViewModel() {
     private val _erro = MutableLiveData<String>()
     val erro: LiveData<String> = _erro
 
-//    fun carregarClientes(clienteApiService: ClienteApiService) {
-//        clienteApiService.getClientes()?.enqueue(object : Callback<List<Cliente?>?> {
-//            override fun onResponse(call: Call<List<Cliente?>?>, response: Response<List<Cliente?>?>) {
-//                if (response.isSuccessful) {
-//                    _clientes.value = response.body() as List<Cliente>?
-//                } else {
-//                    _erro.value = "Erro ao carregar clientes: ${response.message()}"
-//                }
-//            }
-//
-//            override fun onFailure(call: Call<List<Cliente?>?>, t: Throwable) {
-//                _erro.value = "Erro ao carregar clientes: ${t.message}"
-//            }
-//        })
-//    }
     fun carregarClientes(clienteApiService: ClienteApiService) {
         clienteApiService.getClientes()?.enqueue(object : Callback<ClienteResponse> {
             override fun onResponse(call: Call<ClienteResponse>, response: Response<ClienteResponse>) {
