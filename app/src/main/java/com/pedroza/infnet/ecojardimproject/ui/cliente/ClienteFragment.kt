@@ -11,6 +11,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.pedroza.infnet.ecojardimproject.R
 import com.pedroza.infnet.ecojardimproject.databinding.FragmentClienteBinding
 import com.pedroza.infnet.ecojardimproject.models.Cliente
@@ -35,32 +36,30 @@ class ClienteFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        // Obtem a referencia para o RecyclerView
+        val swipeRefreshLayout = view.findViewById<SwipeRefreshLayout>(R.id.swipe_list_client)
         val recyclerView = binding.clientRecycler
 
-        // Configura o RecyclerView com um layout manager linear
+        swipeRefreshLayout.setOnRefreshListener {
+            clienteViewModel.carregarClientes(RetrofitService.apiEcoJardimProject.create(
+                ClienteApiService::class.java))
+            swipeRefreshLayout.isRefreshing = false
+        }
+
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
-        // Inicializa o adapter com uma lista vazia
         clienteAdapter = ClienteAdapter(emptyList())
 
-        // Define o adapter para o RecyclerView
         recyclerView.adapter = clienteAdapter
 
-        // Observa as alterações na lista de clientes
         clienteViewModel.clientes.observe(viewLifecycleOwner, { clientes ->
-            // Atualiza o adapter com a nova lista de clientes
             clienteAdapter.updateClientesList(clientes)
         })
 
-        // Observa os erros durante a requisição de dados
         clienteViewModel.erro.observe(viewLifecycleOwner, { mensagemErro ->
             Toast.makeText(requireContext(), mensagemErro, Toast.LENGTH_LONG).show()
             println(mensagemErro)
         })
 
-        // Carrega a lista de clientes ao iniciar a tela
         clienteViewModel.carregarClientes(RetrofitService.apiEcoJardimProject.create(
             ClienteApiService::class.java))
     }

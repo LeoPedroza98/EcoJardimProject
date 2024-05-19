@@ -2,8 +2,8 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
 
     <TextView
         android:id="@+id/list_nome"
@@ -15,7 +15,6 @@
         android:textColor="@color/green_eco"
         android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/list_sobrenome"
         app:layout_constraintEnd_toStartOf="@+id/item_nome"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -28,7 +27,6 @@
         android:textColor="@color/green_eco"
         android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/list_documento"
         app:layout_constraintEnd_toStartOf="@+id/item_sobrenome"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/list_nome" />
@@ -37,12 +35,10 @@
         android:id="@+id/list_documento"
         android:layout_width="180dp"
         android:layout_height="30dp"
-        android:layout_marginBottom="629dp"
         android:text="@string/title_documento"
         android:textColor="@color/green_eco"
         android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/item_documento"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/list_sobrenome" />
@@ -56,7 +52,6 @@
         android:hint="@string/conteudo_nome"
         android:textColor="@color/green_eco"
         android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@+id/item_sobrenome"
         app:layout_constraintEnd_toStartOf="@+id/adicionar_cliente"
         app:layout_constraintStart_toEndOf="@+id/list_nome"
         app:layout_constraintTop_toTopOf="parent" />
@@ -69,7 +64,6 @@
         android:hint="@string/conteudo_sobrenome"
         android:textColor="@color/green_eco"
         android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@+id/item_documento"
         app:layout_constraintEnd_toStartOf="@+id/excluir_cliente"
         app:layout_constraintStart_toEndOf="@+id/list_sobrenome"
         app:layout_constraintTop_toBottomOf="@+id/item_nome" />
@@ -78,12 +72,10 @@
         android:id="@+id/item_documento"
         android:layout_width="200dp"
         android:layout_height="30dp"
-        android:layout_marginBottom="629dp"
         android:fontFamily="sans-serif"
         android:hint="@string/conteudo_documento"
         android:textColor="@color/green_eco"
         android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/edit_cliente"
         app:layout_constraintStart_toEndOf="@+id/list_documento"
         app:layout_constraintTop_toBottomOf="@+id/item_sobrenome" />
@@ -95,11 +87,9 @@
         android:layout_marginTop="12dp"
         android:background="@drawable/baseline_add_box_24"
         android:contentDescription="@string/add_list"
-        app:layout_constraintBottom_toTopOf="@+id/excluir_cliente"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/item_nome"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/baseline_add_box_24" />
 
     <androidx.constraintlayout.utils.widget.ImageFilterButton
@@ -108,7 +98,6 @@
         android:layout_height="30dp"
         android:background="@drawable/baseline_create_24"
         android:contentDescription="@string/add_list"
-        app:layout_constraintBottom_toTopOf="@+id/edit_cliente"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/item_sobrenome"
         app:layout_constraintTop_toBottomOf="@+id/adicionar_cliente"
@@ -118,7 +107,6 @@
         android:id="@+id/edit_cliente"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:layout_marginBottom="629dp"
         android:background="@drawable/baseline_clear_24"
         android:contentDescription="@string/add_list"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -126,5 +114,7 @@
         app:layout_constraintStart_toEndOf="@+id/item_documento"
         app:layout_constraintTop_toBottomOf="@+id/excluir_cliente"
         app:srcCompat="@drawable/baseline_clear_24" />
+
+    <!-- Divider 1 -->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
