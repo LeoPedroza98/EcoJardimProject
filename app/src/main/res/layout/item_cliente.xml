@@ -12,7 +12,6 @@
         android:layout_marginTop="12dp"
         android:fontFamily="sans-serif"
         android:text="@string/title_nome"
-        android:textAlignment="viewStart"
         android:textColor="@color/green_eco"
         android:textSize="16sp"
         android:textStyle="bold"
@@ -58,8 +57,9 @@
         android:textColor="@color/green_eco"
         android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/item_sobrenome"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="181dp" />
+        app:layout_constraintEnd_toStartOf="@+id/adicionar_cliente"
+        app:layout_constraintStart_toEndOf="@+id/list_nome"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/item_sobrenome"
