@@ -60,5 +60,9 @@
         android:id="@+id/clienteFormFragment"
         android:name="com.pedroza.infnet.ecojardimproject.ui.cliente.ClienteFormFragment"
         android:label="@string/form_cliente"
-        tools:layout="@layout/fragment_cliente_form" />
+        tools:layout="@layout/fragment_cliente_form" >
+        <action
+            android:id="@+id/action_clienteFormFragment_to_nav_cliente"
+            app:destination="@id/nav_cliente" />
+    </fragment>
 </navigation>

@@ -21,7 +21,6 @@ class ClienteViewModel : ViewModel() {
         clienteApiService.getClientes()?.enqueue(object : Callback<ClienteResponse> {
             override fun onResponse(call: Call<ClienteResponse>, response: Response<ClienteResponse>) {
                 if (response.isSuccessful) {
-                    // Aqui você precisa extrair a lista de clientes do objeto ClienteResponse
                     _clientes.value = response.body()?.items
                 } else {
                     _erro.value = "Erro ao carregar clientes: ${response.message()}"
@@ -35,21 +34,21 @@ class ClienteViewModel : ViewModel() {
     }
 
 
-    fun criarCliente(clienteApiService: ClienteApiService, cliente: Cliente) {
-        clienteApiService.createCliente(cliente)?.enqueue(object : Callback<Cliente?> {
-            override fun onResponse(call: Call<Cliente?>, response: Response<Cliente?>) {
-                if (response.isSuccessful) {
-                    carregarClientes(clienteApiService)
-                } else {
-                    _erro.value = "Erro ao criar cliente: ${response.message()}"
-                }
-            }
-
-            override fun onFailure(call: Call<Cliente?>, t: Throwable) {
-                _erro.value = "Erro ao criar cliente: ${t.message}"
-            }
-        })
-    }
+//    fun criarCliente(clienteApiService: ClienteApiService, cliente: Cliente) {
+//        clienteApiService.createCliente(cliente)?.enqueue(object : Callback<Cliente?> {
+//            override fun onResponse(call: Call<Cliente?>, response: Response<Cliente?>) {
+//                if (response.isSuccessful) {
+//                    carregarClientes(clienteApiService)
+//                } else {
+//                    _erro.value = "Erro ao criar cliente: ${response.message()}"
+//                }
+//            }
+//
+//            override fun onFailure(call: Call<Cliente?>, t: Throwable) {
+//                _erro.value = "Erro ao criar cliente: ${t.message}"
+//            }
+//        })
+//    }
 
     fun excluirCliente(clienteApiService: ClienteApiService, id: Long) {
         clienteApiService.deleteCliente(id)?.enqueue(object : Callback<Void?> {

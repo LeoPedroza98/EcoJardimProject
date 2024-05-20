@@ -1,8 +1,8 @@
 package com.pedroza.infnet.ecojardimproject.models
 
 data class Contato(
-    val Nome: String,
-    val Telefone: String,
-    val Celular: String,
-    val Email: String
+    val nome: String,
+    val telefone: String,
+    val celular: String,
+    val email: String
 )

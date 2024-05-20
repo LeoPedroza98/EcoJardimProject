@@ -61,5 +61,5 @@
     <string name="hint_telefone">Telefone Fixo</string>
     <string name="btn_proximo">Proximo</string>
     <string name="btn_voltar">Voltar</string>
-    <string name="btn_salvar">Salvar</string>
+    <string name="btn_salvar">Criar Cliente</string>
 </resources>
