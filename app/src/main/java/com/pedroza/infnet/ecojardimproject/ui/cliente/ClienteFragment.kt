@@ -17,6 +17,8 @@ import com.pedroza.infnet.ecojardimproject.databinding.FragmentClienteBinding
 import com.pedroza.infnet.ecojardimproject.models.Cliente
 import com.pedroza.infnet.ecojardimproject.service.ClienteApiService
 import com.pedroza.infnet.ecojardimproject.service.RetrofitService
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 
 class ClienteFragment : Fragment() {
 
@@ -38,6 +40,7 @@ class ClienteFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val swipeRefreshLayout = view.findViewById<SwipeRefreshLayout>(R.id.swipe_list_client)
         val recyclerView = binding.clientRecycler
+        val navController = findNavController()
 
         swipeRefreshLayout.setOnRefreshListener {
             clienteViewModel.carregarClientes(RetrofitService.apiEcoJardimProject.create(

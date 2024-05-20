@@ -42,4 +42,24 @@
     <string name="title_listagem_cliente">Clientes</string>
     <string name="subtitle_lista_clientes">Listagem de Clientes</string>
     <string name="cadastro_fragment">Cadastro</string>
+    <string name="form_cliente">Formulário de Cliente</string>
+    <string name="title_dados_cliente">Informações do Cliente</string>
+    <string name="hint_nome">Nome</string>
+    <string name="hint_sobrenome">Sobrenome</string>
+    <string name="hint_documento">Documento</string>
+    <string name="title_informacoes_endereco">Informações de Endereço</string>
+    <string name="hint_cep">CEP</string>
+    <string name="hint_logradouro">Logradouro</string>
+    <string name="hint_numero">Numero</string>
+    <string name="hint_complemento">Complemento</string>
+    <string name="hint_bairro">Bairro</string>
+    <string name="hint_municipio">Municipio</string>
+    <string name="title_informacoes_contato">Informações de Contato</string>
+    <string name="hint_nome_contato">Nome do Contato</string>
+    <string name="hint_email">Email</string>
+    <string name="hint_celular">Celular</string>
+    <string name="hint_telefone">Telefone Fixo</string>
+    <string name="btn_proximo">Proximo</string>
+    <string name="btn_voltar">Voltar</string>
+    <string name="btn_salvar">Salvar</string>
 </resources>

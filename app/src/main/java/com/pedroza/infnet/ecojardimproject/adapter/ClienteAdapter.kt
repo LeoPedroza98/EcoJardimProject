@@ -1,7 +1,9 @@
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
 import android.widget.TextView
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.pedroza.infnet.ecojardimproject.R
@@ -20,6 +22,9 @@ class ClienteAdapter(private var listaClientes: List<Cliente>) : RecyclerView.Ad
         holder.nomeTextView.text = cliente.nome
         holder.sobrenomeTextView.text = cliente.sobrenome
         holder.documentoTextView.text = cliente.documento
+        holder.adicionarClienteBtn.setOnClickListener {
+            holder.itemView.findNavController().navigate(R.id.action_nav_cliente_to_clienteFormFragment)
+        }
     }
 
     override fun getItemCount(): Int {
@@ -35,5 +40,6 @@ class ClienteAdapter(private var listaClientes: List<Cliente>) : RecyclerView.Ad
         val nomeTextView: TextView = itemView.findViewById(R.id.item_nome)
         val sobrenomeTextView: TextView = itemView.findViewById(R.id.item_sobrenome)
         val documentoTextView: TextView = itemView.findViewById(R.id.item_documento)
+        val adicionarClienteBtn: ImageButton = itemView.findViewById(R.id.adicionar_cliente)
     }
 }

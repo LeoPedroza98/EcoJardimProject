@@ -15,7 +15,11 @@
         android:id="@+id/nav_cliente"
         android:name="com.pedroza.infnet.ecojardimproject.ui.cliente.ClienteFragment"
         android:label="@string/menu_cliente"
-        tools:layout="@layout/fragment_cliente" />
+        tools:layout="@layout/fragment_cliente" >
+        <action
+            android:id="@+id/action_nav_cliente_to_clienteFormFragment"
+            app:destination="@id/clienteFormFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_projeto"
@@ -52,4 +56,9 @@
         android:name="com.pedroza.infnet.ecojardimproject.ui.servicos.ServicosFragment"
         android:label="@string/menu_servicos"
         tools:layout="@layout/fragment_servicos" />
+    <fragment
+        android:id="@+id/clienteFormFragment"
+        android:name="com.pedroza.infnet.ecojardimproject.ui.cliente.ClienteFormFragment"
+        android:label="@string/form_cliente"
+        tools:layout="@layout/fragment_cliente_form" />
 </navigation>

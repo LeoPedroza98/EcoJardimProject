@@ -114,7 +114,4 @@
         app:layout_constraintStart_toEndOf="@+id/item_documento"
         app:layout_constraintTop_toBottomOf="@+id/excluir_cliente"
         app:srcCompat="@drawable/baseline_clear_24" />
-
-    <!-- Divider 1 -->
-
 </androidx.constraintlayout.widget.ConstraintLayout>
