@@ -1,10 +1,10 @@
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.navigation.findNavController
-import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.pedroza.infnet.ecojardimproject.R
 import com.pedroza.infnet.ecojardimproject.models.Cliente
@@ -25,6 +25,14 @@ class ClienteAdapter(private var listaClientes: List<Cliente>) : RecyclerView.Ad
         holder.adicionarClienteBtn.setOnClickListener {
             holder.itemView.findNavController().navigate(R.id.action_nav_cliente_to_clienteFormFragment)
         }
+        holder.editarClienteBtn.setOnClickListener {
+            val bundle = Bundle().apply {
+                putSerializable("cliente", cliente)
+            }
+            holder.itemView.findNavController().navigate(R.id.action_nav_cliente_to_clienteFormFragment, bundle)
+        }
+
+
     }
 
     override fun getItemCount(): Int {
@@ -41,5 +49,6 @@ class ClienteAdapter(private var listaClientes: List<Cliente>) : RecyclerView.Ad
         val sobrenomeTextView: TextView = itemView.findViewById(R.id.item_sobrenome)
         val documentoTextView: TextView = itemView.findViewById(R.id.item_documento)
         val adicionarClienteBtn: ImageButton = itemView.findViewById(R.id.adicionar_cliente)
+        val editarClienteBtn: ImageButton = itemView.findViewById(R.id.edit_cliente)
     }
 }

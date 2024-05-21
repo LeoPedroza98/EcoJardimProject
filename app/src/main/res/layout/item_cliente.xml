@@ -64,7 +64,7 @@
         android:hint="@string/conteudo_sobrenome"
         android:textColor="@color/green_eco"
         android:textSize="16sp"
-        app:layout_constraintEnd_toStartOf="@+id/excluir_cliente"
+        app:layout_constraintEnd_toStartOf="@+id/edit_cliente"
         app:layout_constraintStart_toEndOf="@+id/list_sobrenome"
         app:layout_constraintTop_toBottomOf="@+id/item_nome" />
 
@@ -93,7 +93,7 @@
         app:srcCompat="@drawable/baseline_add_box_24" />
 
     <androidx.constraintlayout.utils.widget.ImageFilterButton
-        android:id="@+id/excluir_cliente"
+        android:id="@+id/edit_cliente"
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:background="@drawable/baseline_create_24"
@@ -104,7 +104,7 @@
         app:srcCompat="@drawable/baseline_create_24" />
 
     <androidx.constraintlayout.utils.widget.ImageFilterButton
-        android:id="@+id/edit_cliente"
+        android:id="@+id/excluir_cliente"
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:background="@drawable/baseline_clear_24"
@@ -112,6 +112,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/item_documento"
-        app:layout_constraintTop_toBottomOf="@+id/excluir_cliente"
+        app:layout_constraintTop_toBottomOf="@+id/edit_cliente"
+        app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/baseline_clear_24" />
 </androidx.constraintlayout.widget.ConstraintLayout>

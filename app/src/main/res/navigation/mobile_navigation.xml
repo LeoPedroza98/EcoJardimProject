@@ -64,5 +64,8 @@
         <action
             android:id="@+id/action_clienteFormFragment_to_nav_cliente"
             app:destination="@id/nav_cliente" />
+        <argument
+            android:name="cliente"
+            app:argType="com.pedroza.infnet.ecojardimproject.models.Cliente" />
     </fragment>
 </navigation>

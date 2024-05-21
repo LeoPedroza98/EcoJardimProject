@@ -14,6 +14,7 @@ import com.pedroza.infnet.ecojardimproject.models.Cliente
 import com.pedroza.infnet.ecojardimproject.models.Contato
 import com.pedroza.infnet.ecojardimproject.models.Endereco
 import com.pedroza.infnet.ecojardimproject.service.ClienteApiService
+import com.pedroza.infnet.ecojardimproject.service.JsonPatchOperation
 import com.pedroza.infnet.ecojardimproject.service.RetrofitService
 import retrofit2.Call
 import retrofit2.Callback
@@ -26,6 +27,8 @@ class ClienteFormFragment : Fragment() {
     }
 
     private val viewModel: ClienteFormViewModel by viewModels()
+    private var cliente: Cliente? = null
+    private var clienteId: Long? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,6 +40,16 @@ class ClienteFormFragment : Fragment() {
         val inputDocumento = view.findViewById<TextInputEditText>(R.id.input_documento)
         val buttonSalvar = view.findViewById<Button>(R.id.button_salvar_cliente)
 
+        arguments?.let {
+            cliente = it.getSerializable("cliente") as? Cliente
+            clienteId = cliente?.id
+            cliente?.let { c ->
+                inputNome.setText(c.nome)
+                inputSobrenome.setText(c.sobrenome)
+                inputDocumento.setText(c.documento)
+            }
+        }
+
         buttonSalvar.setOnClickListener {
             val nome = inputNome.text.toString()
             val sobrenome = inputSobrenome.text.toString()
@@ -46,8 +59,12 @@ class ClienteFormFragment : Fragment() {
 
         viewModel.saveButtonClickListener.observe(viewLifecycleOwner) { clicked ->
             if (clicked) {
-                createCliente()
-                viewModel._saveButtonClickListener.value = false // Reset click state
+                if (clienteId == null) {
+                    createCliente()
+                } else {
+                    updateCliente(clienteId!!)
+                }
+                viewModel._saveButtonClickListener.value = false
             }
         }
         return view
@@ -90,4 +107,68 @@ class ClienteFormFragment : Fragment() {
             }
         })
     }
+
+    fun createPatchOperations(cliente: Cliente): List<JsonPatchOperation> {
+        val operations = mutableListOf<JsonPatchOperation>()
+
+        if (!cliente.nome.isNullOrBlank()) {
+            operations.add(JsonPatchOperation("replace", "/nome", cliente.nome))
+        }
+        if (!cliente.sobrenome.isNullOrBlank()) {
+            operations.add(JsonPatchOperation("replace", "/sobrenome", cliente.sobrenome))
+        }
+        if (!cliente.documento.isNullOrBlank()) {
+            operations.add(JsonPatchOperation("replace", "/documento", cliente.documento))
+        }
+        // Adicione verificações semelhantes para outros campos que você deseja atualizar...
+
+        return operations
+    }
+    private fun updateCliente(clienteId: Long) {
+        val service = RetrofitService.apiEcoJardimProject.create(ClienteApiService::class.java)
+
+        // Obtenha os valores atuais dos campos do formulário.
+        val nome = view?.findViewById<TextInputEditText>(R.id.input_nome)?.text.toString()
+        val sobrenome = view?.findViewById<TextInputEditText>(R.id.input_sobrenome)?.text.toString()
+        val documento = view?.findViewById<TextInputEditText>(R.id.input_documento)?.text.toString()
+
+        // Crie um objeto Cliente com os valores atuais do formulário.
+        val clienteAtualizado = Cliente(
+            id = clienteId,
+            nome = nome,
+            sobrenome = sobrenome,
+            documento = documento,
+            endereco = Endereco(
+                logradouro = "",
+                numero = "",
+                complemento = "",
+                cep = "",
+                bairro = "",
+                municipio = ""
+            ),
+            contato = Contato(
+                nome = "",
+                telefone = "",
+                celular = "",
+                email = ""
+            ),
+            projetos = emptyList()
+        )
+
+
+        val patchOperations = createPatchOperations(clienteAtualizado)
+        service.updateCliente(clienteId, patchOperations).enqueue(object : Callback<Cliente?> {
+            override fun onResponse(call: Call<Cliente?>, response: Response<Cliente?>) {
+                if (response.isSuccessful) {
+                    findNavController().navigate(R.id.action_clienteFormFragment_to_nav_cliente)
+                }
+            }
+
+            override fun onFailure(call: Call<Cliente?>, t: Throwable) {
+            }
+        })
+    }
+
+
+
 }
