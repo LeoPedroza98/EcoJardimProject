@@ -1,4 +1,4 @@
-package com.pedroza.infnet.ecojardimproject.ui.login.ui.login
+package com.pedroza.infnet.ecojardimproject.ui.login
 
 import android.os.Bundle
 import android.text.Editable

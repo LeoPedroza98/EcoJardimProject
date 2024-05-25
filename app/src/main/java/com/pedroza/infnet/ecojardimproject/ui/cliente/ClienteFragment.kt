@@ -6,19 +6,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.pedroza.infnet.ecojardimproject.R
 import com.pedroza.infnet.ecojardimproject.databinding.FragmentClienteBinding
-import com.pedroza.infnet.ecojardimproject.models.Cliente
 import com.pedroza.infnet.ecojardimproject.service.ClienteApiService
 import com.pedroza.infnet.ecojardimproject.service.RetrofitService
-import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
+
 
 class ClienteFragment : Fragment() {
 
@@ -33,6 +31,7 @@ class ClienteFragment : Fragment() {
     ): View {
         _binding = FragmentClienteBinding.inflate(inflater, container, false)
         clienteViewModel = ViewModelProvider(requireActivity()).get(ClienteViewModel::class.java)
+
         return binding.root
     }
 
@@ -50,7 +49,7 @@ class ClienteFragment : Fragment() {
 
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
-        clienteAdapter = ClienteAdapter(emptyList())
+        clienteAdapter = ClienteAdapter(emptyList(),clienteViewModel,RetrofitService.apiEcoJardimProject.create(ClienteApiService::class.java))
 
         recyclerView.adapter = clienteAdapter
 

@@ -32,11 +32,22 @@ class MainActivity : AppCompatActivity() {
         // menu should be considered as top level destinations.
         appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.nav_home, R.id.nav_cliente, R.id.nav_projeto
+                R.id.nav_home, R.id.nav_cliente, R.id.nav_projeto,R.id.nav_orcamentos,R.id.nav_servicos
             ), drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            when (destination.id) {
+                R.id.loginFragment -> supportActionBar?.hide()
+                else -> {
+                    if (destination.id == R.id.nav_home ||destination.id == R.id.nav_cliente || destination.id == R.id.nav_projeto || destination.id == R.id.nav_orcamentos || destination.id == R.id.nav_servicos) {
+                        supportActionBar?.show()
+                    }
+                }
+            }
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

@@ -103,7 +103,6 @@ class ClienteFormFragment : Fragment() {
             }
 
             override fun onFailure(call: Call<Cliente?>, t: Throwable) {
-                // Tratamento de falha na comunicação com a API
             }
         })
     }
@@ -120,19 +119,15 @@ class ClienteFormFragment : Fragment() {
         if (!cliente.documento.isNullOrBlank()) {
             operations.add(JsonPatchOperation("replace", "/documento", cliente.documento))
         }
-        // Adicione verificações semelhantes para outros campos que você deseja atualizar...
 
         return operations
     }
     private fun updateCliente(clienteId: Long) {
         val service = RetrofitService.apiEcoJardimProject.create(ClienteApiService::class.java)
-
-        // Obtenha os valores atuais dos campos do formulário.
         val nome = view?.findViewById<TextInputEditText>(R.id.input_nome)?.text.toString()
         val sobrenome = view?.findViewById<TextInputEditText>(R.id.input_sobrenome)?.text.toString()
         val documento = view?.findViewById<TextInputEditText>(R.id.input_documento)?.text.toString()
 
-        // Crie um objeto Cliente com os valores atuais do formulário.
         val clienteAtualizado = Cliente(
             id = clienteId,
             nome = nome,
@@ -168,7 +163,4 @@ class ClienteFormFragment : Fragment() {
             }
         })
     }
-
-
-
 }

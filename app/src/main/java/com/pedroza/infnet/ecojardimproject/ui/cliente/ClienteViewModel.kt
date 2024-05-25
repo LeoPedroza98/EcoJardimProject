@@ -33,23 +33,6 @@ class ClienteViewModel : ViewModel() {
         })
     }
 
-
-//    fun criarCliente(clienteApiService: ClienteApiService, cliente: Cliente) {
-//        clienteApiService.createCliente(cliente)?.enqueue(object : Callback<Cliente?> {
-//            override fun onResponse(call: Call<Cliente?>, response: Response<Cliente?>) {
-//                if (response.isSuccessful) {
-//                    carregarClientes(clienteApiService)
-//                } else {
-//                    _erro.value = "Erro ao criar cliente: ${response.message()}"
-//                }
-//            }
-//
-//            override fun onFailure(call: Call<Cliente?>, t: Throwable) {
-//                _erro.value = "Erro ao criar cliente: ${t.message}"
-//            }
-//        })
-//    }
-
     fun excluirCliente(clienteApiService: ClienteApiService, id: Long) {
         clienteApiService.deleteCliente(id)?.enqueue(object : Callback<Void?> {
             override fun onResponse(call: Call<Void?>, response: Response<Void?>) {
