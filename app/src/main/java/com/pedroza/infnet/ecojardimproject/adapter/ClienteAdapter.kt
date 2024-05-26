@@ -56,8 +56,6 @@ class ClienteAdapter(private var listaClientes: List<Cliente>,private val client
         val clienteExcluido = listaClientes[position]
         listaClientes = listaClientes.filterIndexed { index, _ -> index != position }
         notifyDataSetChanged()
-
-        // Chamar o método excluirCliente no ViewModel
         clienteViewModel.excluirCliente(clienteApiService, clienteExcluido.id)
     }
     fun updateClientesList(newList: List<Cliente>) {

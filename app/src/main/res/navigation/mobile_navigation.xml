@@ -25,7 +25,11 @@
         android:id="@+id/nav_projeto"
         android:name="com.pedroza.infnet.ecojardimproject.ui.projeto.ProjetoFragment"
         android:label="@string/menu_projeto"
-        tools:layout="@layout/fragment_projeto" />
+        tools:layout="@layout/fragment_projeto" >
+        <action
+            android:id="@+id/action_nav_projeto_to_projetoFormFragment"
+            app:destination="@id/projetoFormFragment" />
+    </fragment>
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.pedroza.infnet.ecojardimproject.ui.login.LoginFragment"
@@ -67,5 +71,14 @@
         <argument
             android:name="cliente"
             app:argType="com.pedroza.infnet.ecojardimproject.models.Cliente" />
+    </fragment>
+    <fragment
+        android:id="@+id/projetoFormFragment"
+        android:name="com.pedroza.infnet.ecojardimproject.ui.projeto.ProjetoFormFragment"
+        android:label="fragment_projeto_form"
+        tools:layout="@layout/fragment_projeto_form" >
+        <action
+            android:id="@+id/action_projetoFormFragment_to_nav_projeto"
+            app:destination="@id/nav_projeto" />
     </fragment>
 </navigation>

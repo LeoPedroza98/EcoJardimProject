@@ -41,9 +41,12 @@
     <string name="add_list">Adicionar</string>
     <string name="title_listagem_cliente">Clientes</string>
     <string name="subtitle_lista_clientes">Listagem de Clientes</string>
+    <string name="title_listagem_projeto">Projetos</string>
+    <string name="subtitle_lista_projeto">Listagem de Projetos</string>
     <string name="cadastro_fragment">Cadastro</string>
     <string name="form_cliente">Formulário de Cliente</string>
     <string name="title_dados_cliente">Informações do Cliente</string>
+    <string name="title_dados_projeto">Informações do Projeto</string>
     <string name="hint_nome">Nome</string>
     <string name="hint_sobrenome">Sobrenome</string>
     <string name="hint_documento">Documento</string>
@@ -62,4 +65,20 @@
     <string name="btn_proximo">Proximo</string>
     <string name="btn_voltar">Voltar</string>
     <string name="btn_salvar">Criar Cliente</string>
+    <string name="title_nome_projeto">Nome do Projeto:</string>
+    <string name="title_data">Data Inicial:</string>
+    <string name="title_data_final">Data Final(Estimativa):</string>
+    <string name="title_status">Status:</string>
+    <string name="conteudo_nome_projeto">Nome do Projeto</string>
+    <string name="conteudo_data_inicial">Data Inicial</string>
+    <string name="conteudo_data_final">Data Final</string>
+    <string name="conteudo_status">Status</string>
+    <string name="auto_complete_clientes">Clientes</string>
+    <string name="hint_nome_projeto">Nome do Projeto</string>
+    <string name="hint_descricao">Descrição</string>
+    <string name="hint_data_inicial">Data Inicial</string>
+    <string name="hint_data_final">Data Final</string>
+    <string name="hint_valor_estimado">Valor Estimado (R$) </string>
+    <string name="adicionar_projeto">Adicionar Projeto</string>
+    <string name="Adicionar" />
 </resources>

@@ -25,6 +25,11 @@ class RetrofitService {
             .client(httpClient) // Usa o cliente HTTP com o interceptor
             .addConverterFactory(GsonConverterFactory.create())
             .build()
+
+
+        val statusApiService: StatusApiService = apiEcoJardimProject.create(StatusApiService::class.java)
     }
+
+
 }
 
