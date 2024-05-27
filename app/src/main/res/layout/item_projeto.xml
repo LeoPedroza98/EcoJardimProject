@@ -129,5 +129,34 @@
         app:layout_constraintStart_toEndOf="@+id/list_status"
         app:layout_constraintTop_toBottomOf="@+id/item_data_final" />
 
+    <androidx.constraintlayout.utils.widget.ImageFilterButton
+        android:id="@+id/excluir_projeto"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="103dp"
+        android:background="@drawable/baseline_clear_24"
+        android:contentDescription="@string/add_list"
+        app:layout_constraintBottom_toTopOf="@+id/item_nome_projeto"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/edit_projeto"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/baseline_clear_24" />
+
+    <androidx.constraintlayout.utils.widget.ImageFilterButton
+        android:id="@+id/edit_projeto"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="208dp"
+        android:layout_marginTop="103dp"
+        android:background="@drawable/baseline_create_24"
+        android:contentDescription="@string/add_list"
+        app:layout_constraintBottom_toTopOf="@+id/item_nome_projeto"
+        app:layout_constraintEnd_toStartOf="@+id/excluir_projeto"
+        app:layout_constraintStart_toEndOf="@+id/list_nome_projeto"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/baseline_create_24" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

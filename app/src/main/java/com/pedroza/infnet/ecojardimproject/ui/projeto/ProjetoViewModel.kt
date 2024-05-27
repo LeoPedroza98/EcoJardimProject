@@ -42,12 +42,12 @@ class ProjetoViewModel : ViewModel() {
                 if (response.isSuccessful) {
                     carregarProjetos(projetoApiService)
                 } else {
-                    _erro.value = "Erro ao excluir cliente: ${response.message()}"
+                    _erro.value = "Erro ao excluir Projeto: ${response.message()}"
                 }
             }
 
             override fun onFailure(call: Call<Void?>, t: Throwable) {
-                _erro.value = "Erro ao excluir cliente: ${t.message}"
+                _erro.value = "Erro ao excluir Projeto: ${t.message}"
             }
         })
     }

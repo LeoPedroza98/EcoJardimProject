@@ -11,11 +11,32 @@ import com.pedroza.infnet.ecojardimproject.service.RetrofitService
 import kotlinx.coroutines.launch
 
 class ProjetoFormViewModel : ViewModel() {
-    private val _statusList = MutableLiveData<List<Status>>()
+    val _statusList = MutableLiveData<List<Status>>()
     val statusList: LiveData<List<Status>> get() = _statusList
-
-    private val _clienteList = MutableLiveData<List<Cliente>>()
+    val _clienteList = MutableLiveData<List<Cliente>>()
     val clienteList: LiveData<List<Cliente>> get() = _clienteList
+
+    val nomeProjeto = MutableLiveData<String>()
+    val descricao = MutableLiveData<String>()
+    val dataInicial = MutableLiveData<String>()
+    val dataFinal = MutableLiveData<String>()
+    val valorEstimado = MutableLiveData<Double>()
+    val statusSelecionado = MutableLiveData<Status>()
+    val clienteSelecionado = MutableLiveData<Cliente>()
+    val _saveButtonClickListener = MutableLiveData<Boolean>()
+    val saveButtonClickListener: LiveData<Boolean> = _saveButtonClickListener
+
+
+    fun OnSalvarButtonProjetos(nomeProjeto: String, descricao: String, dataInicial: String, dataFinal: String, valor: Double, statusId: Long, clienteId: Long){
+        this.nomeProjeto.value = nomeProjeto
+        this.descricao.value = descricao
+        this.dataInicial.value = dataInicial
+        this.dataFinal.value = dataFinal
+        this.valorEstimado.value = valor
+        this.statusSelecionado.value = _statusList.value?.firstOrNull { it.id == statusId }
+        this.clienteSelecionado.value = _clienteList.value?.firstOrNull { it.id == clienteId }
+        _saveButtonClickListener.value = true
+    }
 
 
     fun getStatusFromApi() {

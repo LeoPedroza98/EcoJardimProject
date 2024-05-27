@@ -5,10 +5,10 @@ data class Projeto(
     var nome: String,
     var descricao: String,
     var statusId: Long?,
-    var status: Status?,
+    var status: Status? = null,
     var prazoInicial: String,
     var prazoFinal: String,
     var valor: Double,
-    var clienteId: Long,
-    var cliente: Cliente?
+    var clienteId: Long?,
+    var cliente: Cliente? = null
 )

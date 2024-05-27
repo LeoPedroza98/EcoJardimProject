@@ -28,12 +28,15 @@ class ProjetoAdapter(
     private val projetoApiService: ProjetoApiService
 ): RecyclerView.Adapter<ProjetoAdapter.ProjetoViewHolder>() {
 
+    private val dateFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy")
+
     class ProjetoViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val nomeProjeto: TextView = itemView.findViewById(R.id.item_nome_projeto)
         val dataInicial: TextView = itemView.findViewById(R.id.item_data_inicial)
         val dataFinal: TextView = itemView.findViewById(R.id.item_data_final)
         val statusText: TextView = itemView.findViewById(R.id.item_status)
         val adicionar_projeto: Button = itemView.findViewById(R.id.input_adicionar_projeto)
+        val excluir_projeto: ImageButton = itemView.findViewById(R.id.excluir_projeto)
 
     }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProjetoViewHolder {
@@ -46,20 +49,34 @@ class ProjetoAdapter(
         return listaProjetos.size
     }
 
+    fun excluirProjeto(position: Int) {
+        val projetoExcluido = listaProjetos[position]
+        listaProjetos = listaProjetos.filterIndexed { index, _ -> index != position }
+        notifyDataSetChanged()
+        projetoViewModel.excluirProjeto(projetoApiService, projetoExcluido.id)
+    }
+
     fun updateProjetoList(newList: List<Projeto>) {
         listaProjetos = newList
         notifyDataSetChanged()
     }
 
+    private fun parseDate(dateString: String): String {
+        return try {
+            val parsedDate = OffsetDateTime.parse(dateString, dateFormatter)
+            parsedDate.format(dateFormatter)
+        } catch (e: Exception) {
+            dateString
+        }
+    }
+
     override fun onBindViewHolder(holder: ProjetoViewHolder, position: Int) {
         val projeto = listaProjetos[position]
-        val formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy")
-        val prazoInicial = OffsetDateTime.parse(projeto.prazoInicial)
-        val prazoFinal = OffsetDateTime.parse(projeto.prazoFinal)
-
         holder.nomeProjeto.text = projeto.nome
-        holder.dataInicial.text = prazoInicial.format(formatter)
-        holder.dataFinal.text = prazoFinal.format(formatter)
+        val prazoInicialFormatted = parseDate(projeto.prazoInicial)
+        val prazoFinalFormatted = parseDate(projeto.prazoFinal)
+        holder.dataInicial.text = prazoInicialFormatted
+        holder.dataFinal.text = prazoFinalFormatted
         holder.statusText.text = projeto.status?.nome
 
         holder.adicionar_projeto.setOnClickListener {
@@ -70,6 +87,10 @@ class ProjetoAdapter(
             holder.adicionar_projeto.visibility = View.VISIBLE
         } else {
             holder.adicionar_projeto.visibility = View.GONE
+        }
+
+        holder.excluir_projeto.setOnClickListener {
+            excluirProjeto(position)
         }
 
     }
