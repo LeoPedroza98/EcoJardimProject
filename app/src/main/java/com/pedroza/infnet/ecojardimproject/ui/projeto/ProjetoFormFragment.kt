@@ -21,6 +21,8 @@ class ProjetoFormFragment : Fragment() {
 
     private lateinit var statusSpinner: Spinner
 
+    private lateinit var clienteSpinner: Spinner
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -38,16 +40,33 @@ class ProjetoFormFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         statusSpinner = view.findViewById(R.id.statusSpinner)
+        viewModel.getStatusFromApi()
 
         viewModel.statusList.observe(viewLifecycleOwner) { statusList ->
             val adapter = ArrayAdapter(
                 requireContext(),
                 android.R.layout.simple_spinner_item,
-                statusList.map {  it.nome }
+                statusList.map { it.nome }
             )
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
             statusSpinner.adapter = adapter
         }
-        viewModel.getStatusFromApi()
+
+        clienteSpinner = view.findViewById(R.id.clienteSpinner)
+
+        viewModel.getClienteFromApi()
+
+        viewModel.clienteList.observe(viewLifecycleOwner){
+            clienteList ->
+            val  adapter = ArrayAdapter(
+                requireContext(),
+                android.R.layout.simple_spinner_item,
+                clienteList.map { it.nome }
+            )
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            clienteSpinner.adapter = adapter
+        }
+
+
     }
 }
