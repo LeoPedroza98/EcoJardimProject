@@ -1,5 +1,7 @@
 package com.pedroza.infnet.ecojardimproject.models
 
+import java.io.Serializable
+
 data class Projeto(
     var id: Long,
     var nome: String,
@@ -11,4 +13,4 @@ data class Projeto(
     var valor: Double,
     var clienteId: Long?,
     var cliente: Cliente? = null
-)
+): Serializable

@@ -1,5 +1,6 @@
 package com.pedroza.infnet.ecojardimproject.adapter
 
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -36,6 +37,7 @@ class ProjetoAdapter(
         val dataFinal: TextView = itemView.findViewById(R.id.item_data_final)
         val statusText: TextView = itemView.findViewById(R.id.item_status)
         val adicionar_projeto: Button = itemView.findViewById(R.id.input_adicionar_projeto)
+        val editar_projeto: ImageButton = itemView.findViewById(R.id.edit_projeto)
         val excluir_projeto: ImageButton = itemView.findViewById(R.id.excluir_projeto)
 
     }
@@ -91,6 +93,13 @@ class ProjetoAdapter(
 
         holder.excluir_projeto.setOnClickListener {
             excluirProjeto(position)
+        }
+
+        holder.editar_projeto.setOnClickListener {
+            val bundle = Bundle().apply {
+                putSerializable("projeto", projeto)
+            }
+            holder.itemView.findNavController().navigate(R.id.action_nav_projeto_to_projetoFormFragment, bundle)
         }
 
     }
