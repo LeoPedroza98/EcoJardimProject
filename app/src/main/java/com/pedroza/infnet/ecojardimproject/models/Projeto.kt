@@ -7,7 +7,7 @@ data class Projeto(
     var statusId: Long?,
     var status: Status?,
     var prazoInicial: String,
-    var prazoFinal: String?,
+    var prazoFinal: String,
     var valor: Double,
     var clienteId: Long,
     var cliente: Cliente?
