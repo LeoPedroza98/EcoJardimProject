@@ -15,6 +15,7 @@ import com.pedroza.infnet.ecojardimproject.R
 import com.pedroza.infnet.ecojardimproject.models.Orcamento
 import com.pedroza.infnet.ecojardimproject.models.Projeto
 import com.pedroza.infnet.ecojardimproject.models.Servico
+import com.pedroza.infnet.ecojardimproject.service.JsonPatchOperation
 import com.pedroza.infnet.ecojardimproject.service.ProjetoApiService
 import com.pedroza.infnet.ecojardimproject.service.RetrofitService
 import com.pedroza.infnet.ecojardimproject.service.ServicoApiService
@@ -83,14 +84,71 @@ class ServicosFormFragment : Fragment() {
                 if (servicoId == null) {
                     createServicos()
                 }
-//                else {
-////                    updateProjeto(projetoId!!)
-////                }
+                else {
+                    updateServico(servicoId!!)
+                }
                 viewModel._saveButtonClickListener.value = false
             }
         }
 
         return view
+    }
+
+    fun createPatchOperations(servico: Servico): List<JsonPatchOperation> {
+        val operations = mutableListOf<JsonPatchOperation>()
+
+        if (servico.orcamentoId != null) {
+            operations.add(JsonPatchOperation("replace", "/orcamentoId", servico.orcamentoId as Any))
+        }
+        if (!servico.nome.isNullOrBlank()) {
+            operations.add(JsonPatchOperation("replace", "/nome", servico.nome))
+        }
+        if (!servico.descricao.isNullOrBlank()) {
+            operations.add(JsonPatchOperation("replace", "/descricao", servico.descricao))
+        }
+        if (!servico.dataInicio.isNullOrBlank()) {
+            operations.add(JsonPatchOperation("replace", "/dataInicio", servico.dataInicio))
+        }
+        if (!servico.dataFinalizacao.isNullOrBlank()) {
+            operations.add(JsonPatchOperation("replace", "/dataFinalizacao", servico.dataFinalizacao))
+        }
+        if (!servico.valor.isNaN()) {
+            operations.add(JsonPatchOperation("replace", "/valor", servico.valor))
+        }
+        if (servico.statusId != null) {
+            operations.add(JsonPatchOperation("replace", "/statusId", servico.statusId as Any))
+        }
+        return operations
+    }
+
+    private fun updateServico(servicoId: Long) {
+        val service = RetrofitService.apiEcoJardimProject.create(ServicoApiService::class.java)
+        val statusSelecionado = viewModel.statusList.value?.firstOrNull { it.nome == status_Spinner.selectedItem.toString() }
+        val orcamentoSelecionado = viewModel.orcamentoList.value?.firstOrNull { it.nome == orcamento_Spinner.selectedItem.toString() }
+
+        val servicoAtualizado = Servico(
+            id = 0L,
+            nome = viewModel.nomeServico.value ?: "",
+            descricao = viewModel.descricaoServico.value ?: "",
+            valor = viewModel.valorServico.value ?: 0.0,
+            statusId = statusSelecionado?.id,
+            status = null,
+            orcamentoId = orcamentoSelecionado?.id,
+            orcamento = null,
+            dataInicio = viewModel.dataInicio.value ?: "",
+            dataFinalizacao = viewModel.dataFinalizacao.value ?: "",
+        )
+
+        val patchOperations = createPatchOperations(servicoAtualizado)
+        service.updateServico(servicoId, patchOperations).enqueue(object : Callback<Servico?> {
+            override fun onResponse(call: Call<Servico?>, response: Response<Servico?>) {
+                if (response.isSuccessful) {
+                    findNavController().navigate(R.id.action_servicosFormFragment_to_nav_servicos)
+                }
+            }
+            override fun onFailure(call: Call<Servico?>, t: Throwable) {
+            }
+        })
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
