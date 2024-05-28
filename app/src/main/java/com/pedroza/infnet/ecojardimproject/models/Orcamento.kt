@@ -5,7 +5,7 @@ import java.util.Date
 data class Orcamento(
     val id: Long,
     val nome: String,
-    val dataCriacao: Date,
+    val dataCriacao: String,
     val descricao: String,
     val projetoId: Long,
     val projeto: Projeto?,

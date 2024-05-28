@@ -5,6 +5,7 @@ import com.pedroza.infnet.ecojardimproject.models.Projeto
 import com.pedroza.infnet.ecojardimproject.response.ClienteResponse
 import com.pedroza.infnet.ecojardimproject.response.ProjetoResponse
 import retrofit2.Call
+import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.DELETE
 import retrofit2.http.GET
@@ -17,6 +18,9 @@ interface ProjetoApiService {
     @GET("/Projeto")
     @Headers("include: Status,Cliente")
     fun getProjetos(): Call<ProjetoResponse>
+
+    @GET("/Projeto")
+    suspend fun getProjetoCoroutines(): Response<ProjetoResponse>
 
     @POST("/Projeto")
     fun createProjeto(@Body projeto: Projeto?): Call<Projeto?>?

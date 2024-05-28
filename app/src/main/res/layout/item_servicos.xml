@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+
+    <Button
+        android:id="@+id/input_adicionar_servicos"
+        android:layout_width="161dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="4dp"
+        android:text="@string/add_list"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.483"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/item_nome_servico"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:fontFamily="sans-serif"
+        android:hint="@string/conteudo_nome_servico"
+        android:textColor="@color/green_eco"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/list_nome_descricao_servico"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/list_nome_servico" />
+
+    <TextView
+        android:id="@+id/list_nome_servico"
+        android:layout_width="170dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="241dp"
+        android:fontFamily="sans-serif"
+        android:text="@string/title_nome_servico"
+        android:textColor="@color/green_eco"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/item_nome_orcamento"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:id="@+id/list_nome_descricao_servico"
+        android:layout_width="170dp"
+        android:layout_height="30dp"
+        android:layout_marginEnd="241dp"
+        android:fontFamily="sans-serif"
+        android:text="@string/title_descricao"
+        android:textColor="@color/green_eco"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/item_nome_servico" />
+
+
+    <TextView
+        android:id="@+id/item_descricao_servico"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:fontFamily="sans-serif"
+        android:hint="@string/hint_descricao"
+        android:textColor="@color/green_eco"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/list_valor_servico"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/list_nome_descricao_servico" />
+
+
+    <TextView
+        android:id="@+id/list_valor_servico"
+        android:layout_width="170dp"
+        android:layout_height="30dp"
+        android:layout_marginEnd="241dp"
+        android:fontFamily="sans-serif"
+        android:text="@string/title_valor"
+        android:textColor="@color/green_eco"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/item_valor_servico"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/item_descricao_servico" />
+
+
+    <TextView
+        android:id="@+id/item_valor_servico"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:fontFamily="sans-serif"
+        android:hint="@string/title_valor_servico"
+        android:textColor="@color/green_eco"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/list_status_servico"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/list_valor_servico" />
+
+    <TextView
+        android:id="@+id/list_status_servico"
+        android:layout_width="170dp"
+        android:layout_height="30dp"
+        android:layout_marginEnd="241dp"
+        android:fontFamily="sans-serif"
+        android:text="@string/title_status"
+        android:textColor="@color/green_eco"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/item_status_servico"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/item_valor_servico" />
+
+    <TextView
+        android:id="@+id/item_status_servico"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:fontFamily="sans-serif"
+        android:hint="@string/conteudo_status"
+        android:textColor="@color/green_eco"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/list_status_servico" />
+
+
+    <androidx.constraintlayout.utils.widget.ImageFilterButton
+        android:id="@+id/excluir_servico"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="80dp"
+        android:background="@drawable/baseline_clear_24"
+        android:contentDescription="@string/add_list"
+        app:layout_constraintBottom_toTopOf="@+id/item_nome_servico"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/edit_orcamento"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/baseline_clear_24" />
+
+    <androidx.constraintlayout.utils.widget.ImageFilterButton
+        android:id="@+id/edit_servico"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="181dp"
+        android:layout_marginTop="80dp"
+        android:background="@drawable/baseline_create_24"
+        android:contentDescription="@string/add_list"
+        app:layout_constraintBottom_toTopOf="@+id/item_nome_servico"
+        app:layout_constraintEnd_toStartOf="@+id/excluir_orcamento"
+        app:layout_constraintStart_toEndOf="@+id/list_nome_servico"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/baseline_create_24" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -28,8 +28,8 @@ class RetrofitService {
 
 
         val statusApiService: StatusApiService = apiEcoJardimProject.create(StatusApiService::class.java)
-
         val clienteApiService: ClienteApiService = apiEcoJardimProject.create(ClienteApiService::class.java)
+        val projetoApiService: ProjetoApiService = apiEcoJardimProject.create(ProjetoApiService::class.java)
     }
 
 

@@ -43,6 +43,8 @@
     <string name="subtitle_lista_clientes">Listagem de Clientes</string>
     <string name="title_listagem_projeto">Projetos</string>
     <string name="subtitle_lista_projeto">Listagem de Projetos</string>
+    <string name="title_listagem_orcamentos">Orçamentos</string>
+    <string name="subtitle_lista_orcamentos">Listagem de Orcamentos</string>
     <string name="cadastro_fragment">Cadastro</string>
     <string name="form_cliente">Formulário de Cliente</string>
     <string name="title_dados_cliente">Informações do Cliente</string>
@@ -70,6 +72,9 @@
     <string name="title_data_final">Data Final(Estimativa):</string>
     <string name="title_status">Status:</string>
     <string name="conteudo_nome_projeto">Nome do Projeto</string>
+    <string name="conteudo_nome_orcamento">Nome do Orçamento</string>
+    <string name="conteudo_nome_servico">Nome do Serviço</string>
+    <string name="conteudo_descricao_orcamento">Descrição do Orçamento</string>
     <string name="conteudo_data_inicial">Data Inicial</string>
     <string name="conteudo_data_final">Data Final</string>
     <string name="conteudo_status">Status</string>
@@ -81,4 +86,11 @@
     <string name="hint_valor_estimado">Valor Estimado (R$) </string>
     <string name="adicionar_projeto">Adicionar Projeto</string>
     <string name="Adicionar" />
+    <string name="title_nome_orcamento">Nome do Orçamento:</string>
+    <string name="title_descricao">Descrição:</string>
+    <string name="title_nome_servico">Serviço:</string>
+    <string name="title_list_nome_projeto">Nome do Projeto:</string>
+    <string name="hint_projeto_orcamento">Nome do Projeto</string>
+    <string name="title_valor">Valor:</string>
+    <string name="title_valor_servico">Valor do Serviço</string>
 </resources>
