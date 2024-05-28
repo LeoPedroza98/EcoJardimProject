@@ -145,12 +145,15 @@ class ServicosFormFragment : Fragment() {
         service.updateServico(servicoId, patchOperations).enqueue(object : Callback<Servico?> {
             override fun onResponse(call: Call<Servico?>, response: Response<Servico?>) {
                 if (response.isSuccessful) {
+                    Toast.makeText(requireContext(), "Serviço atualizado com sucesso", Toast.LENGTH_SHORT)
                     findNavController().navigate(R.id.action_servicosFormFragment_to_nav_servicos)
                 }
             }
             override fun onFailure(call: Call<Servico?>, t: Throwable) {
+                Log.e("ServicosFormFragment", "Falha na atualização do Serviço: ${t.message}")
             }
         })
+        findNavController().navigate(R.id.action_servicosFormFragment_to_nav_servicos)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -218,20 +221,16 @@ class ServicosFormFragment : Fragment() {
             orcamento = null,
             dataInicio = viewModel.dataInicio.value ?: "",
             dataFinalizacao = viewModel.dataFinalizacao.value ?: "",
-            )
+        )
 
         service.createServico(servico)?.enqueue(object : Callback<Servico?> {
             override fun onResponse(call: Call<Servico?>, response: Response<Servico?>) {
                 if (response.isSuccessful) {
-                    Toast.makeText(requireContext(), "Serviço atualizado com sucesso", Toast.LENGTH_SHORT)
                     findNavController().navigate(R.id.action_servicosFormFragment_to_nav_servicos)
                 }
             }
-
             override fun onFailure(call: Call<Servico?>, t: Throwable) {
-                Log.e("ServicoFormFragment", "Falha na atualização do cliente: ${t.message}")
             }
         })
-        findNavController().navigate(R.id.action_servicosFormFragment_to_nav_servicos)
     }
 }
