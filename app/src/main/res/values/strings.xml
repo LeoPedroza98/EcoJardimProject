@@ -97,4 +97,12 @@
     <string name="title_valor">Valor:</string>
     <string name="title_valor_servico">Valor do Serviço</string>
     <string name="hint_orcamento_nome">Nome do Orçamento</string>
+    <string name="hint_nome_servico">Nome do Serviço</string>
+    <string name="hint_descricao_servico">Descrição</string>
+    <string name="hint_data_inicio">Data de Inicio</string>
+    <string name="hint_data_finalizacao">Data de Finalização</string>
+    <string name="hint_valor_servico">Valor do Serviço</string>
+    <string name="botao_adicionar_servico">Adicionar Serviço</string>
+    <string name="title_lista_servicos">Serviços</string>
+    <string name="subtitle_servicos">Listagens de Serviços</string>
 </resources>

@@ -1,11 +1,13 @@
 package com.pedroza.infnet.ecojardimproject.adapter
 
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.TextView
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.pedroza.infnet.ecojardimproject.R
 import com.pedroza.infnet.ecojardimproject.models.Projeto
@@ -56,6 +58,17 @@ class ServicosAdapter(
             holder.btnAdicionaServico.visibility = View.VISIBLE
         } else {
             holder.btnAdicionaServico.visibility = View.GONE
+        }
+
+        holder.btnAdicionaServico.setOnClickListener {
+            holder.itemView.findNavController().navigate(R.id.action_nav_servicos_to_servicosFormFragment)
+        }
+
+        holder.btnEditaServico.setOnClickListener {
+            val bundle = Bundle().apply {
+                putSerializable("servico", servico)
+            }
+            holder.itemView.findNavController().navigate(R.id.action_nav_servicos_to_servicosFormFragment, bundle)
         }
     }
 }

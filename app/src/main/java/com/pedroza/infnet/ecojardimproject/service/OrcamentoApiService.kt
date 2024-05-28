@@ -2,9 +2,11 @@ package com.pedroza.infnet.ecojardimproject.service
 
 import com.pedroza.infnet.ecojardimproject.models.Orcamento
 import com.pedroza.infnet.ecojardimproject.models.Projeto
+import com.pedroza.infnet.ecojardimproject.response.ClienteResponse
 import com.pedroza.infnet.ecojardimproject.response.OrcamentoResponse
 import com.pedroza.infnet.ecojardimproject.response.ProjetoResponse
 import retrofit2.Call
+import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.DELETE
 import retrofit2.http.GET
@@ -17,6 +19,9 @@ interface OrcamentoApiService {
     @GET("/Orcamento")
     @Headers("include: Projeto")
     fun getOrcamentos(): Call<OrcamentoResponse>
+
+    @GET("/Orcamento")
+    suspend fun getOrcamentoCoroutines(): Response<OrcamentoResponse>
     @POST("/Orcamento")
     fun createOrcamento(@Body orcamento: Orcamento?): Call<Orcamento?>?
     @PATCH("Orcamento/{id}")

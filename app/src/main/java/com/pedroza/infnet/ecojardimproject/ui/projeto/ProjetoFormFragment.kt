@@ -39,11 +39,6 @@ class ProjetoFormFragment : Fragment() {
 
     private lateinit var clienteSpinner: Spinner
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        // TODO: Use the ViewModel
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

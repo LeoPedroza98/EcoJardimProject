@@ -63,7 +63,11 @@
         android:id="@+id/nav_servicos"
         android:name="com.pedroza.infnet.ecojardimproject.ui.servicos.ServicosFragment"
         android:label="@string/menu_servicos"
-        tools:layout="@layout/fragment_servicos" />
+        tools:layout="@layout/fragment_servicos" >
+        <action
+            android:id="@+id/action_nav_servicos_to_servicosFormFragment"
+            app:destination="@id/servicosFormFragment" />
+    </fragment>
     <fragment
         android:id="@+id/clienteFormFragment"
         android:name="com.pedroza.infnet.ecojardimproject.ui.cliente.ClienteFormFragment"
@@ -93,5 +97,14 @@
         <action
             android:id="@+id/action_orcamentosFormFragment_to_nav_orcamentos"
             app:destination="@id/nav_orcamentos" />
+    </fragment>
+    <fragment
+        android:id="@+id/servicosFormFragment"
+        android:name="com.pedroza.infnet.ecojardimproject.ui.servicos.ServicosFormFragment"
+        android:label="fragment_servicos_form"
+        tools:layout="@layout/fragment_servicos_form" >
+        <action
+            android:id="@+id/action_servicosFormFragment_to_nav_servicos"
+            app:destination="@id/nav_servicos" />
     </fragment>
 </navigation>
