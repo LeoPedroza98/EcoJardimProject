@@ -21,43 +21,57 @@ class ClienteAdapter(private var listaClientes: List<Cliente>,private val client
     }
 
     override fun onBindViewHolder(holder: ClienteViewHolder, position: Int) {
-        val cliente = listaClientes[position]
-        holder.nomeTextView.text = cliente.nome
-        holder.sobrenomeTextView.text = cliente.sobrenome
-        holder.documentoTextView.text = cliente.documento
-
-        holder.adicionarClienteBtn.setOnClickListener {
-            holder.itemView.findNavController().navigate(R.id.action_nav_cliente_to_clienteFormFragment)
-        }
-
-        if (position == 0) {
+        if (listaClientes.isEmpty()) {
             holder.adicionarClienteBtn.visibility = View.VISIBLE
-        } else {
-            holder.adicionarClienteBtn.visibility = View.GONE
-        }
 
-        holder.editarClienteBtn.setOnClickListener {
-            val bundle = Bundle().apply {
-                putSerializable("cliente", cliente)
+            holder.adicionarClienteBtn.setOnClickListener {
+                holder.itemView.findNavController().navigate(R.id.action_nav_cliente_to_clienteFormFragment)
             }
-            holder.itemView.findNavController().navigate(R.id.action_nav_cliente_to_clienteFormFragment, bundle)
-        }
 
-        holder.excluirClienteBtn.setOnClickListener {
-            excluirCliente(position)
+            holder.nomeTextView.text = ""
+            holder.sobrenomeTextView.text = ""
+            holder.documentoTextView.text = ""
+        } else {
+            val cliente = listaClientes[position]
+            holder.nomeTextView.text = cliente.nome
+            holder.sobrenomeTextView.text = cliente.sobrenome
+            holder.documentoTextView.text = cliente.documento
+
+            if (position == 0) {
+                holder.adicionarClienteBtn.visibility = View.VISIBLE
+                holder.adicionarClienteBtn.setOnClickListener {
+                    holder.itemView.findNavController().navigate(R.id.action_nav_cliente_to_clienteFormFragment)
+                }
+            } else {
+                holder.adicionarClienteBtn.visibility = View.GONE
+            }
+
+            holder.editarClienteBtn.setOnClickListener {
+                val bundle = Bundle().apply {
+                    putSerializable("cliente", cliente)
+                }
+                holder.itemView.findNavController().navigate(R.id.action_nav_cliente_to_clienteFormFragment, bundle)
+            }
+
+            holder.excluirClienteBtn.setOnClickListener {
+                excluirCliente(position)
+            }
         }
     }
 
     override fun getItemCount(): Int {
-        return listaClientes.size
+        return if (listaClientes.isEmpty()) 1 else listaClientes.size
     }
 
     fun excluirCliente(position: Int) {
-        val clienteExcluido = listaClientes[position]
-        listaClientes = listaClientes.filterIndexed { index, _ -> index != position }
-        notifyDataSetChanged()
-        clienteViewModel.excluirCliente(clienteApiService, clienteExcluido.id)
+        if (listaClientes.isNotEmpty()) {
+            val clienteExcluido = listaClientes[position]
+            listaClientes = listaClientes.filterIndexed { index, _ -> index != position }
+            notifyDataSetChanged()
+            clienteViewModel.excluirCliente(clienteApiService, clienteExcluido.id)
+        }
     }
+
     fun updateClientesList(newList: List<Cliente>) {
         listaClientes = newList
         notifyDataSetChanged()

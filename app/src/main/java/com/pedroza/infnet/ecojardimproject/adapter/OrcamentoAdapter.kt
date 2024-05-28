@@ -41,41 +41,64 @@ class OrcamentoAdapter(
     }
 
     fun excluirOrcamento(position: Int) {
-        val orcamentoExcluido = listaOrcamentos[position]
-        listaOrcamentos = listaOrcamentos.filterIndexed { index, _ -> index != position }
-        notifyDataSetChanged()
-        orcamentoViewModel.excluirProjeto(orcamentoApiService, orcamentoExcluido.id)
+        if (listaOrcamentos.isNotEmpty()) {
+            val orcamentoExcluido = listaOrcamentos[position]
+            listaOrcamentos = listaOrcamentos.filterIndexed { index, _ -> index != position }
+            notifyDataSetChanged()
+            orcamentoViewModel.excluirProjeto(orcamentoApiService, orcamentoExcluido.id)
+        }
     }
 
     override fun getItemCount(): Int {
-        return listaOrcamentos.size
+        return if (listaOrcamentos.isEmpty()) 1 else listaOrcamentos.size
     }
 
     override fun onBindViewHolder(holder: OrcamentoViewHolder, position: Int) {
-        val orcamentos = listaOrcamentos[position]
-        holder.nomeOrcamento.text = orcamentos.nome
-        holder.descricaoOrcamento.text = orcamentos.descricao
-        holder.projetoOrcamento.text = orcamentos.projeto?.nome
-
-        holder.adicionarOrcamento.setOnClickListener {
-            holder.itemView.findNavController().navigate(R.id.action_nav_orcamentos_to_orcamentosFormFragment)
-        }
-
-        if (position == 0) {
+        if (listaOrcamentos.isEmpty()) {
             holder.adicionarOrcamento.visibility = View.VISIBLE
-        } else {
-            holder.adicionarOrcamento.visibility = View.GONE
-        }
 
-        holder.editarOrcamento.setOnClickListener {
-            val bundle = Bundle().apply {
-                putSerializable("orcamento", orcamentos)
+            holder.adicionarOrcamento.setOnClickListener {
+                holder.itemView.findNavController()
+                    .navigate(R.id.action_nav_orcamentos_to_orcamentosFormFragment)
             }
-            holder.itemView.findNavController().navigate(R.id.action_nav_orcamentos_to_orcamentosFormFragment, bundle)
-        }
+            // Limpa os campos de texto
+            holder.nomeOrcamento.text = ""
+            holder.descricaoOrcamento.text = ""
+            holder.projetoOrcamento.text = ""
+        } else {
+            val orcamentos = listaOrcamentos[position]
+            holder.nomeOrcamento.visibility = View.VISIBLE
+            holder.descricaoOrcamento.visibility = View.VISIBLE
+            holder.projetoOrcamento.visibility = View.VISIBLE
+            holder.editarOrcamento.visibility = View.VISIBLE
+            holder.excluirOrcamento.visibility = View.VISIBLE
+            holder.adicionarOrcamento.visibility = View.GONE
 
-        holder.excluirOrcamento.setOnClickListener {
-            excluirOrcamento(position)
+            holder.nomeOrcamento.text = orcamentos.nome
+            holder.descricaoOrcamento.text = orcamentos.descricao
+            holder.projetoOrcamento.text = orcamentos.projeto?.nome
+
+            if (position == 0) {
+                holder.adicionarOrcamento.visibility = View.VISIBLE
+                holder.adicionarOrcamento.setOnClickListener {
+                    holder.itemView.findNavController()
+                        .navigate(R.id.action_nav_orcamentos_to_orcamentosFormFragment)
+                }
+            } else {
+                holder.adicionarOrcamento.visibility = View.GONE
+            }
+
+            holder.editarOrcamento.setOnClickListener {
+                val bundle = Bundle().apply {
+                    putSerializable("orcamento", orcamentos)
+                }
+                holder.itemView.findNavController()
+                    .navigate(R.id.action_nav_orcamentos_to_orcamentosFormFragment, bundle)
+            }
+
+            holder.excluirOrcamento.setOnClickListener {
+                excluirOrcamento(position)
+            }
         }
     }
 }

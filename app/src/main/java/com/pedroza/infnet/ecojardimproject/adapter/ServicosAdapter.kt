@@ -39,7 +39,7 @@ class ServicosAdapter(
     }
 
     override fun getItemCount(): Int {
-       return listaServico.size
+        return if (listaServico.isEmpty()) 1 else listaServico.size
     }
 
     fun updateServicoList(newList: List<Servico>) {
@@ -48,38 +48,59 @@ class ServicosAdapter(
     }
 
     fun excluirServico(position: Int) {
-        val servicoExcluido = listaServico[position]
-        listaServico = listaServico.filterIndexed { index, _ -> index != position }
-        notifyDataSetChanged()
-        servicoViewModel.excluirServico(servicoApiService, servicoExcluido.id)
+        if (listaServico.isNotEmpty()) {
+            val servicoExcluido = listaServico[position]
+            listaServico = listaServico.filterIndexed { index, _ -> index != position }
+            notifyDataSetChanged()
+            servicoViewModel.excluirServico(servicoApiService, servicoExcluido.id)
+        }
     }
 
     override fun onBindViewHolder(holder: ServicoViewHolder, position: Int) {
-        val servico = listaServico[position]
-        holder.nomeServico.text = servico.nome
-        holder.descricaoServico.text = servico.descricao
-        holder.valorServico.text = servico.valor.toString()
-        holder.statusServico.text = servico.status?.nome
-
-        if (position == 0) {
+        if (listaServico.isEmpty()) {
             holder.btnAdicionaServico.visibility = View.VISIBLE
-        } else {
-            holder.btnAdicionaServico.visibility = View.GONE
-        }
 
-        holder.btnAdicionaServico.setOnClickListener {
-            holder.itemView.findNavController().navigate(R.id.action_nav_servicos_to_servicosFormFragment)
-        }
-
-        holder.btnEditaServico.setOnClickListener {
-            val bundle = Bundle().apply {
-                putSerializable("servico", servico)
+            holder.btnAdicionaServico.setOnClickListener {
+                holder.itemView.findNavController().navigate(R.id.action_nav_servicos_to_servicosFormFragment)
             }
-            holder.itemView.findNavController().navigate(R.id.action_nav_servicos_to_servicosFormFragment, bundle)
-        }
+            holder.nomeServico.text = ""
+            holder.descricaoServico.text = ""
+            holder.valorServico.text = ""
+            holder.statusServico.text = ""
+        } else {
+            val servico = listaServico[position]
+            holder.nomeServico.visibility = View.VISIBLE
+            holder.descricaoServico.visibility = View.VISIBLE
+            holder.valorServico.visibility = View.VISIBLE
+            holder.statusServico.visibility = View.VISIBLE
+            holder.btnEditaServico.visibility = View.VISIBLE
+            holder.btnExcluiServico.visibility = View.VISIBLE
+            holder.btnAdicionaServico.visibility = View.GONE
 
-        holder.btnExcluiServico.setOnClickListener {
-            excluirServico(position)
+            holder.nomeServico.text = servico.nome
+            holder.descricaoServico.text = servico.descricao
+            holder.valorServico.text = servico.valor.toString()
+            holder.statusServico.text = servico.status?.nome
+
+            if (position == 0) {
+                holder.btnAdicionaServico.visibility = View.VISIBLE
+                holder.btnAdicionaServico.setOnClickListener {
+                    holder.itemView.findNavController().navigate(R.id.action_nav_servicos_to_servicosFormFragment)
+                }
+            } else {
+                holder.btnAdicionaServico.visibility = View.GONE
+            }
+
+            holder.btnEditaServico.setOnClickListener {
+                val bundle = Bundle().apply {
+                    putSerializable("servico", servico)
+                }
+                holder.itemView.findNavController().navigate(R.id.action_nav_servicos_to_servicosFormFragment, bundle)
+            }
+
+            holder.btnExcluiServico.setOnClickListener {
+                excluirServico(position)
+            }
         }
     }
 }

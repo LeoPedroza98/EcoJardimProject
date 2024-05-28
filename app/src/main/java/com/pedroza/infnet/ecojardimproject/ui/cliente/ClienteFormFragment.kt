@@ -161,7 +161,6 @@ class ClienteFormFragment : Fragment() {
                     Log.e("ClienteFormFragment", "Erro na atualização do cliente: ${response.errorBody()?.string()}")
                 }
             }
-
             override fun onFailure(call: Call<Cliente?>, t: Throwable) {
             }
         })

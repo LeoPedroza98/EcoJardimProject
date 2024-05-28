@@ -13,11 +13,13 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
+        android:layout_marginBottom="37dp"
         android:text="@string/title_dados_servico"
         android:textAlignment="center"
         android:textColor="@color/green_eco"
         android:textSize="24sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/orcamento_spinner"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -26,10 +28,10 @@
         android:id="@+id/orcamento_spinner"
         android:layout_width="409dp"
         android:layout_height="50dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginTop="37dp"
-        android:layout_marginEnd="1dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
         android:textAlignment="center"
+        app:layout_constraintBottom_toTopOf="@+id/textInputLayout9"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
@@ -38,9 +40,9 @@
         android:id="@+id/textInputLayout9"
         android:layout_width="409dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/textInputLayout10"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/orcamento_spinner">
@@ -56,9 +58,9 @@
         android:id="@+id/textInputLayout10"
         android:layout_width="409dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/textInputLayout13"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout9">
@@ -74,9 +76,9 @@
         android:id="@+id/textInputLayout13"
         android:layout_width="409dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/textInputLayout14"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout10">
@@ -88,13 +90,14 @@
             android:hint="@string/hint_data_inicio" />
     </com.google.android.material.textfield.TextInputLayout>
 
+
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout14"
         android:layout_width="409dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/textInputLayout15"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout13">
@@ -106,13 +109,14 @@
             android:hint="@string/hint_data_finalizacao" />
     </com.google.android.material.textfield.TextInputLayout>
 
+
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout15"
         android:layout_width="409dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/status_spinner"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout14">
@@ -124,28 +128,31 @@
             android:hint="@string/hint_valor_servico" />
     </com.google.android.material.textfield.TextInputLayout>
 
+
     <Spinner
         android:id="@+id/status_spinner"
         android:layout_width="409dp"
         android:layout_height="50dp"
         android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/input_salvar_servicos"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout15" />
+
 
     <Button
         android:id="@+id/input_salvar_servicos"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="247dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="207dp"
         android:text="@string/botao_adicionar_servico"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/status_spinner" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

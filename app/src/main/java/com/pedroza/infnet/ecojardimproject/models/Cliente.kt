@@ -7,7 +7,7 @@ data class Cliente(
     var nome: String,
     var sobrenome: String,
     var documento: String,
-    var endereco: Endereco?,
-    var contato: Contato?,
+    var endereco: Endereco? = null,
+    var contato: Contato?= null,
     var projetos: List<Projeto> = listOf()
 ): Serializable
