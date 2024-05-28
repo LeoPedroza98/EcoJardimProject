@@ -1,5 +1,6 @@
 package com.pedroza.infnet.ecojardimproject.adapter
 
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,8 +17,8 @@ import com.pedroza.infnet.ecojardimproject.ui.orcamentos.OrcamentosViewModel
 
 class OrcamentoAdapter(
     private var listaOrcamentos: List<Orcamento>,
-    private val OrcamentoViewModel: OrcamentosViewModel,
-    private val OrcamentoApiService: OrcamentoApiService
+    private val orcamentoViewModel: OrcamentosViewModel,
+    private val orcamentoApiService: OrcamentoApiService
 ) : RecyclerView.Adapter<OrcamentoAdapter.OrcamentoViewHolder>(){
     class OrcamentoViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val nomeOrcamento: TextView = itemView.findViewById(R.id.item_nome_orcamento)
@@ -39,6 +40,13 @@ class OrcamentoAdapter(
         notifyDataSetChanged()
     }
 
+    fun excluirOrcamento(position: Int) {
+        val orcamentoExcluido = listaOrcamentos[position]
+        listaOrcamentos = listaOrcamentos.filterIndexed { index, _ -> index != position }
+        notifyDataSetChanged()
+        orcamentoViewModel.excluirProjeto(orcamentoApiService, orcamentoExcluido.id)
+    }
+
     override fun getItemCount(): Int {
         return listaOrcamentos.size
     }
@@ -57,6 +65,17 @@ class OrcamentoAdapter(
             holder.adicionarOrcamento.visibility = View.VISIBLE
         } else {
             holder.adicionarOrcamento.visibility = View.GONE
+        }
+
+        holder.editarOrcamento.setOnClickListener {
+            val bundle = Bundle().apply {
+                putSerializable("orcamento", orcamentos)
+            }
+            holder.itemView.findNavController().navigate(R.id.action_nav_orcamentos_to_orcamentosFormFragment, bundle)
+        }
+
+        holder.excluirOrcamento.setOnClickListener {
+            excluirOrcamento(position)
         }
     }
 }

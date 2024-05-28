@@ -15,6 +15,7 @@ import com.google.android.material.textfield.TextInputEditText
 import com.pedroza.infnet.ecojardimproject.R
 import com.pedroza.infnet.ecojardimproject.models.Orcamento
 import com.pedroza.infnet.ecojardimproject.models.Projeto
+import com.pedroza.infnet.ecojardimproject.service.JsonPatchOperation
 import com.pedroza.infnet.ecojardimproject.service.OrcamentoApiService
 import com.pedroza.infnet.ecojardimproject.service.ProjetoApiService
 import com.pedroza.infnet.ecojardimproject.service.RetrofitService
@@ -62,8 +63,8 @@ class OrcamentosFormFragment : Fragment() {
             if (clicked) {
                 if (orcamentoId == null) {
                     createOrcamentos()
-//                }else {
-//                    updateProjeto(projetoId!!)
+                }else {
+                    updateOrcamento(orcamentoId!!)
                 }
                 viewModel._saveButtonClickListener.value = false
             }
@@ -127,6 +128,48 @@ class OrcamentosFormFragment : Fragment() {
         })
     }
 
+    fun createPatchOperations(orcamento: Orcamento): List<JsonPatchOperation> {
+        val operations = mutableListOf<JsonPatchOperation>()
+
+        if (orcamento.projetoId != null) {
+            operations.add(JsonPatchOperation("replace", "/projetoId", orcamento.projetoId as Any))
+        }
+        if (!orcamento.nome.isNullOrBlank()) {
+            operations.add(JsonPatchOperation("replace", "/nome", orcamento.nome))
+        }
+        if (!orcamento.descricao.isNullOrBlank()) {
+            operations.add(JsonPatchOperation("replace", "/descricao", orcamento.descricao))
+        }
+        return operations
+    }
+
+    private fun updateOrcamento(orcamentoId: Long) {
+        val service = RetrofitService.apiEcoJardimProject.create(OrcamentoApiService::class.java)
+        val projetoSelecionado = viewModel.projetoList.value?.firstOrNull { it.nome == projetoSpinner.selectedItem.toString() }
+
+        val orcamentoAtualizado = Orcamento(
+            id = 0L,
+            nome = viewModel.nomeServico.value ?: "",
+            dataCriacao = LocalDateTime.now().toString(),
+            descricao = viewModel.descricaoServico.value?: "",
+            projetoId = projetoSelecionado?.id,
+            projeto = null,
+            servicos = emptyList()
+        )
+
+        val patchOperations = createPatchOperations(orcamentoAtualizado)
+        service.updateOrcamento(orcamentoId, patchOperations).enqueue(object :
+            retrofit2.Callback<Orcamento?> {
+            override fun onResponse(call: Call<Orcamento?>, response: Response<Orcamento?>) {
+                if (response.isSuccessful) {
+                    findNavController().navigate(R.id.action_projetoFormFragment_to_nav_projeto)
+                }
+            }
+
+            override fun onFailure(call: Call<Orcamento?>, t: Throwable) {
+            }
+        })
+    }
 }
 
 
