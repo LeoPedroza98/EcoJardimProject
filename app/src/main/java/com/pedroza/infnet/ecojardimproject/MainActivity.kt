@@ -2,6 +2,7 @@ package com.pedroza.infnet.ecojardimproject
 
 import android.os.Bundle
 import android.view.Menu
+import android.view.MenuItem
 import com.google.android.material.navigation.NavigationView
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -10,6 +11,7 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.auth.FirebaseAuth
 import com.jakewharton.threetenabp.AndroidThreeTen
 import com.pedroza.infnet.ecojardimproject.databinding.ActivityMainBinding
 
@@ -50,6 +52,20 @@ class MainActivity : AppCompatActivity() {
                     }
                 }
             }
+        }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.action_settings -> {
+                true
+            }
+            R.id.logout -> {
+                FirebaseAuth.getInstance().signOut()
+                findNavController(R.id.nav_host_fragment_content_main).navigate(R.id.loginFragment)
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
         }
     }
 

@@ -1,6 +1,8 @@
 package com.pedroza.infnet.ecojardimproject.ui.cliente
 
+import com.pedroza.infnet.ecojardimproject.R
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,7 +11,6 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.textfield.TextInputEditText
-import com.pedroza.infnet.ecojardimproject.R
 import com.pedroza.infnet.ecojardimproject.models.Cliente
 import com.pedroza.infnet.ecojardimproject.models.Contato
 import com.pedroza.infnet.ecojardimproject.models.Endereco
@@ -19,6 +20,7 @@ import com.pedroza.infnet.ecojardimproject.service.RetrofitService
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+
 
 class ClienteFormFragment : Fragment() {
 
@@ -64,7 +66,7 @@ class ClienteFormFragment : Fragment() {
                 } else {
                     updateCliente(clienteId!!)
                 }
-                viewModel._saveButtonClickListener.value = false
+                viewModel.resetSaveButtonClickListener()
             }
         }
         return view
@@ -150,12 +152,13 @@ class ClienteFormFragment : Fragment() {
             projetos = emptyList()
         )
 
-
         val patchOperations = createPatchOperations(clienteAtualizado)
         service.updateCliente(clienteId, patchOperations).enqueue(object : Callback<Cliente?> {
             override fun onResponse(call: Call<Cliente?>, response: Response<Cliente?>) {
                 if (response.isSuccessful) {
                     findNavController().navigate(R.id.action_clienteFormFragment_to_nav_cliente)
+                }else{
+                    Log.e("ClienteFormFragment", "Erro na atualização do cliente: ${response.errorBody()?.string()}")
                 }
             }
 

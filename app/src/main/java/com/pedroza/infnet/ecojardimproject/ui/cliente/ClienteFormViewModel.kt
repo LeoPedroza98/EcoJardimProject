@@ -18,4 +18,8 @@ class ClienteFormViewModel : ViewModel() {
         this.documento.value = documento
         _saveButtonClickListener.value = true
     }
+
+    fun resetSaveButtonClickListener() {
+        _saveButtonClickListener.value = false
+    }
 }
