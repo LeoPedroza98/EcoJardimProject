@@ -49,6 +49,8 @@
     <string name="form_cliente">Formulário de Cliente</string>
     <string name="title_dados_cliente">Informações do Cliente</string>
     <string name="title_dados_projeto">Informações do Projeto</string>
+    <string name="title_dados_servico">Informações do Serviço</string>
+    <string name="title_dados_orcamento">Informações do Orçamento</string>
     <string name="hint_nome">Nome</string>
     <string name="hint_sobrenome">Sobrenome</string>
     <string name="hint_documento">Documento</string>
@@ -85,6 +87,7 @@
     <string name="hint_data_final">Data Final</string>
     <string name="hint_valor_estimado">Valor Estimado (R$) </string>
     <string name="adicionar_projeto">Adicionar Projeto</string>
+    <string name="adicionar_orcamento">Adicionar Orçamento</string>
     <string name="Adicionar" />
     <string name="title_nome_orcamento">Nome do Orçamento:</string>
     <string name="title_descricao">Descrição:</string>
@@ -93,4 +96,5 @@
     <string name="hint_projeto_orcamento">Nome do Projeto</string>
     <string name="title_valor">Valor:</string>
     <string name="title_valor_servico">Valor do Serviço</string>
+    <string name="hint_orcamento_nome">Nome do Orçamento</string>
 </resources>

@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.TextView
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.pedroza.infnet.ecojardimproject.R
 import com.pedroza.infnet.ecojardimproject.models.Orcamento
@@ -48,11 +49,14 @@ class OrcamentoAdapter(
         holder.descricaoOrcamento.text = orcamentos.descricao
         holder.projetoOrcamento.text = orcamentos.projeto?.nome
 
+        holder.adicionarOrcamento.setOnClickListener {
+            holder.itemView.findNavController().navigate(R.id.action_nav_orcamentos_to_orcamentosFormFragment)
+        }
+
         if (position == 0) {
             holder.adicionarOrcamento.visibility = View.VISIBLE
         } else {
             holder.adicionarOrcamento.visibility = View.GONE
         }
     }
-
 }

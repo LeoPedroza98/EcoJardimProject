@@ -54,7 +54,11 @@
         android:id="@+id/nav_orcamentos"
         android:name="com.pedroza.infnet.ecojardimproject.ui.orcamentos.OrcamentosFragment"
         android:label="@string/menu_orcamentos"
-        tools:layout="@layout/fragment_orcamentos" />
+        tools:layout="@layout/fragment_orcamentos" >
+        <action
+            android:id="@+id/action_nav_orcamentos_to_orcamentosFormFragment"
+            app:destination="@id/orcamentosFormFragment" />
+    </fragment>
     <fragment
         android:id="@+id/nav_servicos"
         android:name="com.pedroza.infnet.ecojardimproject.ui.servicos.ServicosFragment"
@@ -80,5 +84,14 @@
         <action
             android:id="@+id/action_projetoFormFragment_to_nav_projeto"
             app:destination="@id/nav_projeto" />
+    </fragment>
+    <fragment
+        android:id="@+id/orcamentosFormFragment"
+        android:name="com.pedroza.infnet.ecojardimproject.ui.orcamentos.OrcamentosFormFragment"
+        android:label="fragment_orcamentos_form"
+        tools:layout="@layout/fragment_orcamentos_form" >
+        <action
+            android:id="@+id/action_orcamentosFormFragment_to_nav_orcamentos"
+            app:destination="@id/nav_orcamentos" />
     </fragment>
 </navigation>
