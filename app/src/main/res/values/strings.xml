@@ -106,4 +106,7 @@
     <string name="botao_adicionar_servico">Adicionar Serviço</string>
     <string name="title_lista_servicos">Serviços</string>
     <string name="subtitle_servicos">Listagens de Serviços</string>
+    <string name="label_formulario">Formulário de Projeto</string>
+    <string name="label_formulario_orcamento">Formulario de Orçamento</string>
+    <string name="label_formulario_servicos">Formulário de Serviços</string>
 </resources>

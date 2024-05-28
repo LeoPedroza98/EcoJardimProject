@@ -3,4 +3,7 @@
     <style name="ShapeAppearanceOverlay.MyApp.FloatingActionButton.Square" parent="">
         <item name="cornerSize">0dp</item>
     </style>
+    <style name="MenuTextStyle" parent="TextAppearance.AppCompat.Widget.ActionBar.Title">
+        <item name="android:textColor">@color/green_eco</item>
+    </style>
 </resources>

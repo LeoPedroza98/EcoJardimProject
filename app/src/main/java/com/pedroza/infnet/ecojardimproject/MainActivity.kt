@@ -57,9 +57,6 @@ class MainActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
-            R.id.action_settings -> {
-                true
-            }
             R.id.logout -> {
                 FirebaseAuth.getInstance().signOut()
                 findNavController(R.id.nav_host_fragment_content_main).navigate(R.id.loginFragment)
