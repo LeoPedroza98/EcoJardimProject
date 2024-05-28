@@ -2,6 +2,7 @@ package com.pedroza.infnet.ecojardimproject.ui.projeto
 
 import androidx.fragment.app.viewModels
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.Spinner
+import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.textfield.TextInputEditText
 import com.pedroza.infnet.ecojardimproject.R
@@ -225,12 +227,15 @@ class ProjetoFormFragment : Fragment() {
         service.updateProjeto(projetoId, patchOperations).enqueue(object : Callback<Projeto?> {
             override fun onResponse(call: Call<Projeto?>, response: Response<Projeto?>) {
                 if (response.isSuccessful) {
+                    Toast.makeText(requireContext(), "Projeto atualizado com sucesso", Toast.LENGTH_SHORT)
                     findNavController().navigate(R.id.action_projetoFormFragment_to_nav_projeto)
                 }
             }
 
             override fun onFailure(call: Call<Projeto?>, t: Throwable) {
+                Log.e("ProjetoFormFragment", "Falha na atualização do Projeto: ${t.message}")
             }
         })
+        findNavController().navigate(R.id.action_projetoFormFragment_to_nav_projeto)
     }
 }

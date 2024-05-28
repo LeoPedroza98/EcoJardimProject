@@ -2,6 +2,7 @@ package com.pedroza.infnet.ecojardimproject.ui.servicos
 
 import androidx.fragment.app.viewModels
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.Spinner
+import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.textfield.TextInputEditText
 import com.pedroza.infnet.ecojardimproject.R
@@ -221,12 +223,15 @@ class ServicosFormFragment : Fragment() {
         service.createServico(servico)?.enqueue(object : Callback<Servico?> {
             override fun onResponse(call: Call<Servico?>, response: Response<Servico?>) {
                 if (response.isSuccessful) {
+                    Toast.makeText(requireContext(), "Serviço atualizado com sucesso", Toast.LENGTH_SHORT)
                     findNavController().navigate(R.id.action_servicosFormFragment_to_nav_servicos)
                 }
             }
 
             override fun onFailure(call: Call<Servico?>, t: Throwable) {
+                Log.e("ServicoFormFragment", "Falha na atualização do cliente: ${t.message}")
             }
         })
+        findNavController().navigate(R.id.action_servicosFormFragment_to_nav_servicos)
     }
 }

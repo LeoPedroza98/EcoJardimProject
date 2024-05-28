@@ -2,6 +2,7 @@ package com.pedroza.infnet.ecojardimproject.ui.orcamentos
 
 import androidx.fragment.app.viewModels
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +11,7 @@ import android.view.WindowInsetsAnimation.Callback
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.Spinner
+import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.textfield.TextInputEditText
 import com.pedroza.infnet.ecojardimproject.R
@@ -162,13 +164,17 @@ class OrcamentosFormFragment : Fragment() {
             retrofit2.Callback<Orcamento?> {
             override fun onResponse(call: Call<Orcamento?>, response: Response<Orcamento?>) {
                 if (response.isSuccessful) {
+                    Toast.makeText(requireContext(), "Orçamento atualizado com sucesso", Toast.LENGTH_SHORT)
                     findNavController().navigate(R.id.action_projetoFormFragment_to_nav_projeto)
                 }
             }
 
             override fun onFailure(call: Call<Orcamento?>, t: Throwable) {
+                Log.e("OrcamentosFormFragment", "Falha na atualização do Orçamento: ${t.message}")
             }
         })
+        //Independente do que aconteça ele vai voltar para listagem.
+        findNavController().navigate(R.id.action_projetoFormFragment_to_nav_projeto)
     }
 }
 

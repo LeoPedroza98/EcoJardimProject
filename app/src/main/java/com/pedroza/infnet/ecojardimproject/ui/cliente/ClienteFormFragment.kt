@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -131,7 +132,7 @@ class ClienteFormFragment : Fragment() {
         val documento = view?.findViewById<TextInputEditText>(R.id.input_documento)?.text.toString()
 
         val clienteAtualizado = Cliente(
-            id = clienteId,
+            id = 0L,
             nome = nome,
             sobrenome = sobrenome,
             documento = documento,
@@ -156,13 +157,17 @@ class ClienteFormFragment : Fragment() {
         service.updateCliente(clienteId, patchOperations).enqueue(object : Callback<Cliente?> {
             override fun onResponse(call: Call<Cliente?>, response: Response<Cliente?>) {
                 if (response.isSuccessful) {
-                    findNavController().navigate(R.id.action_clienteFormFragment_to_nav_cliente)
-                }else{
+                    Toast.makeText(requireContext(), "Cliente atualizado com sucesso", Toast.LENGTH_SHORT).show()
+                    findNavController().popBackStack(R.id.nav_cliente, false)
+                } else {
                     Log.e("ClienteFormFragment", "Erro na atualização do cliente: ${response.errorBody()?.string()}")
                 }
             }
+
             override fun onFailure(call: Call<Cliente?>, t: Throwable) {
+                Log.e("ClienteFormFragment", "Falha na atualização do cliente: ${t.message}")
             }
         })
+        findNavController().popBackStack(R.id.nav_cliente, false)
     }
 }
