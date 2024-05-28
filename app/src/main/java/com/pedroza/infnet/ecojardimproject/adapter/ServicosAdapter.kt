@@ -47,6 +47,13 @@ class ServicosAdapter(
         notifyDataSetChanged()
     }
 
+    fun excluirServico(position: Int) {
+        val servicoExcluido = listaServico[position]
+        listaServico = listaServico.filterIndexed { index, _ -> index != position }
+        notifyDataSetChanged()
+        servicoViewModel.excluirServico(servicoApiService, servicoExcluido.id)
+    }
+
     override fun onBindViewHolder(holder: ServicoViewHolder, position: Int) {
         val servico = listaServico[position]
         holder.nomeServico.text = servico.nome
@@ -69,6 +76,10 @@ class ServicosAdapter(
                 putSerializable("servico", servico)
             }
             holder.itemView.findNavController().navigate(R.id.action_nav_servicos_to_servicosFormFragment, bundle)
+        }
+
+        holder.btnExcluiServico.setOnClickListener {
+            excluirServico(position)
         }
     }
 }
